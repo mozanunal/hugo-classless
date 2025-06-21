@@ -1,0 +1,30 @@
+{{- /* layouts/_default/list.html */ -}}
+{{ define "main" }}
+
+  <header>
+    {{/* The list's title, e.g., "Posts", is the main heading on this page. */}}
+    <h1>{{ .Title }}</h1>
+    {{/* Render _index.md content if it exists */}}
+    {{ if .Content }}
+      <div>{{ .Content }}</div>
+    {{ end }}
+  </header>
+
+  <hr />
+
+  {{/* Loop through pages, newest first */}}
+  {{ range .Pages.ByDate.Reverse }}
+    <article>
+      {{/* Post titles in a list are secondary headings */}}
+      <h2>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+      {{ if .Description }}
+        <p>{{ .Description }}</p>
+      {{ end }}
+      {{/* Use the correct <time> element for dates */}}
+      <p><em><small><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time></small></em></p>
+    </article>
+  {{ end }}
+
+{{ end }}

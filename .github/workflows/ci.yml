@@ -1,0 +1,52 @@
+name: Build and Deploy
+
+# Run this workflow only when a push is made to the main branch
+on:
+  push:
+    branches:
+      - main
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Grant GITHUB_TOKEN the permissions to write to a branch
+permissions:
+  contents: write
+
+# Prevent multiple workflows from running at the same time
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checks out your repository (the "main" branch)
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (if they are submodules)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      # 2. Sets up the Hugo environment
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          # extended: true # Uncomment if you use Sass/SCSS
+
+      # 3. Builds the Hugo site
+      - name: Build
+        run: make build
+
+      # 4. Pushes the built content from 'exampleSite/public' to the 'public' branch
+      - name: Deploy to public branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # The branch you want to deploy to
+          publish_branch: public
+          # The folder that contains your built site
+          publish_dir: ./exampleSite/public
+          # Optional: if you have a custom domain
+          # cname: example.com

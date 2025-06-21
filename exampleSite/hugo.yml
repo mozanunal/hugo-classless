@@ -1,0 +1,70 @@
+# This is the configuration for the example site of the "hugo-classless" theme.
+# Use this as a reference or starting point for your own site's configuration.
+
+# --- Core Site Configuration ---
+# IMPORTANT: Change this to your site's final domain.
+baseURL: 'https://hugo-classless.netlify.app/'
+languageCode: 'en-US'
+# The main title for your site. Appears in the header and browser tabs.
+title: 'Hugo Classless Theme'
+# This tells Hugo to use the theme. In an example site, it often refers to the parent directory.
+theme: 'hugo-classless'
+
+
+# --- Custom Theme Parameters ---
+# These are variables created by the theme. You can customize them here.
+params:
+  # The author's name, used in the footer.
+  author: "John Doe"
+  # A short site description, often used for SEO.
+  description: "An example site for the clean and configurable Hugo Classless theme."
+
+  # --- Asset Configuration ---
+  # The stylesheet is configurable. You can swap the CDN link for a local file like "/css/style.css".
+  css: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
+  # You can change the paths to your favicons here.
+  faviconSVG: "/favicon.svg"
+  faviconICO: "/favicon.ico"
+  appleTouchIcon: "/apple-touch-icon.png"
+  webmanifest: "/site.webmanifest"
+
+
+# --- Main Navigation ---
+# This section controls the main navigation bar.
+# Add, remove, or reorder links by editing the entries below.
+# 'weight' determines the order (lower numbers appear first).
+menu:
+  main:
+    - name: 'Home'
+      pageRef: '/'
+      weight: 10
+    - name: 'Posts'
+      pageRef: '/posts'
+      weight: 20
+    - name: 'Projects'
+      pageRef: '/projects'
+      weight: 30
+    - name: 'Contact'
+      pageRef: '/contact'
+      weight: 40
+
+
+# --- Optional: Math Typesetting (KaTeX) ---
+# The theme supports math rendering with KaTeX out of the box.
+# To enable it, keep this section. To disable it, you can remove or comment out this entire markup block.
+markup:
+  goldmark:
+    renderer:
+      # This allows raw HTML blocks, which is required for KaTeX to work properly.
+      unsafe: true
+  katex:
+    # Set to true to enable KaTeX processing on pages with math.
+    enabled: true
+
+
+# --- Hugo Version ---
+# Specifies the minimum Hugo version required for this theme to work correctly.
+module:
+  hugoVersion:
+    extended: false
+    min: '0.146.0'

@@ -1,0 +1,10 @@
+name: "hugo-classless"
+description: "Minimal, classless CSS theme"
+homepage: "https://github.com/mozanunal/hugo-classless"
+tags:
+  - "classless"
+  - "minimal"
+  - "semantic"
+  - "katex"
+min_version: "0.125.0"
+license: "MIT"

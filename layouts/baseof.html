@@ -1,0 +1,59 @@
+{{- /* layouts/_default/baseof.html */ -}}
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+
+    <link rel="stylesheet" href="{{ .Site.Params.css }}">
+
+    <title>
+      {{- if .IsHome -}}
+        {{ .Site.Title }}
+      {{- else -}}
+        {{ .Title }} | {{ .Site.Title }}
+      {{- end -}}
+    </title>
+
+    {{- /* Favicons are now configurable from hugo.toml */ -}}
+    <link rel="icon" href="{{ .Site.Params.faviconSVG | relURL }}" type="image/svg+xml">
+    <link rel="shortcut icon" href="{{ .Site.Params.faviconICO | relURL }}">
+    <link rel="apple-touch-icon" href="{{ .Site.Params.appleTouchIcon | relURL }}">
+    <link rel="manifest" href="{{ .Site.Params.webmanifest | relURL }}">
+
+  </head>
+
+
+  <body>
+    <header>
+      {{- /* Site title is pulled from hugo.toml */ -}}
+      <h3><a href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h3>
+
+      {{- /* Rebuilds your exact "Link | Link | Link" navbar structure from the menu config */ -}}
+      {{ if .Site.Menus.main }}
+      <nav>
+        <h4>
+          {{ $links := slice }}
+          {{ range .Site.Menus.main }}
+            {{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
+            {{ $links = $links | append $link }}
+          {{ end }}
+          {{- delimit $links " | " | safeHTML -}}
+        </h4>
+      </nav>
+      {{ end }}
+    </header>
+
+    <main>
+      {{- /* Main content block for other templates */ -}}
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer>
+      <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
+    </footer>
+  </body>
+	{{ if .Params.math}}{{ partial "math.html" . }}{{ end }}
+			{{ template "_internal/google_analytics.html" . }}
+</html>
