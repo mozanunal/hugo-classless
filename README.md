@@ -1,4 +1,5 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a6ea1653-ceea-42a1-a6d0-7dc005c86441/deploy-status)](https://app.netlify.com/projects/hugo-classless/deploys) [![Build and Deploy to Public Branch](https://github.com/mozanunal/hugo-classless/actions/workflows/deploy.yml/badge.svg)](https://github.com/mozanunal/hugo-classless/actions/workflows/deploy.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a6ea1653-ceea-42a1-a6d0-7dc005c86441/deploy-status)](https://app.netlify.com/projects/hugo-classless/deploys)
+[![Build and Deploy](https://github.com/mozanunal/hugo-classless/actions/workflows/ci.yml/badge.svg)](https://github.com/mozanunal/hugo-classless/actions/workflows/ci.yml)
 
 # Hugo Classless Theme
 
