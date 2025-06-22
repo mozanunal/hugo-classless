@@ -10,7 +10,6 @@ title: 'Hugo Classless Theme'
 # This tells Hugo to use the theme. In an example site, it often refers to the parent directory.
 theme: 'hugo-classless'
 
-
 # --- Custom Theme Parameters ---
 # These are variables created by the theme. You can customize them here.
 params:
@@ -19,15 +18,57 @@ params:
   # A short site description, often used for SEO.
   description: "An example site for the clean and configurable Hugo Classless theme."
 
-  # --- Asset Configuration ---
-  # The stylesheet is configurable. You can swap the CDN link for a local file like "/css/style.css".
-  css: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
+  # --- Stylesheet Configuration ---
+  # To enable the live theme-switcher, define a list of two or more themes.
+  # If only one theme is listed, it will be used statically and the selector will be hidden.
+  themes:
+    - name: "HTML only"
+      url: ""
+    - name: "Classless.css"
+      url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
+    - name: "Pico"
+      url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    - name: "Pico-Fluid"
+      url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
+    - name: "Water.css"
+      url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    - name: "Sakura.css"
+      url: "https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css"
+    - name: "Classless.de"
+      url: "https://classless.de/classless.min.css"
+    - name: "Simple.css"
+      url: "https://cdn.simplecss.org/simple.min.css"
+    - name: "Almond.css"
+      url: "https://cdn.jsdelivr.net/gh/alvaromontoro/almond.css@latest/dist/almond.min.css"
+    - name: "Axist.css"
+      url: "https://unpkg.com/axist@latest/dist/axist.min.css"
+    - name: "Marx.css"
+      url: "https://unpkg.com/marx-css/css/marx.min.css"
+    - name: "PerfectMFWS"
+      url: "https://perfectmotherfuckingwebsite.com/fuckingstyle.css"
+    - name: "New.css"
+      url: "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+    - name: "Missing.css"
+      url: "https://unpkg.com/missing.css"
+    - name: "Bolt.css"
+      url: "https://unpkg.com/boltcss/bolt.min.css"
+
+
+
+  # The single `css` key is used as a fallback if the `themes` list is not defined.
+  # css: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+
+  # Optional: Control the location of the theme selector.
+  # Can be 'header' or 'footer'. Defaults to 'footer' if omitted.
+  themeSelectorLocation: 'header'
+
   # You can change the paths to your favicons here.
   faviconSVG: "/favicon.svg"
   faviconICO: "/favicon.ico"
   appleTouchIcon: "/apple-touch-icon.png"
-  webmanifest: "/site.webmanifest"
 
+  # enable preloading of the links in the viewport
+  quicklink: false
 
 # --- Main Navigation ---
 # This section controls the main navigation bar.
@@ -48,7 +89,6 @@ menu:
       pageRef: '/contact'
       weight: 40
 
-
 # --- Optional: Math Typesetting (KaTeX) ---
 # The theme supports math rendering with KaTeX out of the box.
 # To enable it, keep this section. To disable it, you can remove or comment out this entire markup block.
@@ -61,10 +101,9 @@ markup:
     # Set to true to enable KaTeX processing on pages with math.
     enabled: true
 
-
 # --- Hugo Version ---
 # Specifies the minimum Hugo version required for this theme to work correctly.
 module:
   hugoVersion:
     extended: false
-    min: '0.146.0'
+    min: '0.116.0'

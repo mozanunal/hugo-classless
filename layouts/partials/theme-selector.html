@@ -1,0 +1,43 @@
+<div class="theme-selector">
+  <select id="theme-selector-input">
+    {{- range .Site.Params.themes -}}
+    <option value="{{ .url }}">{{ .name }}</option>
+    {{- end -}}
+  </select>
+</div>
+
+{{- /* Theme switcher logic, only included if more than one theme is defined */ -}}
+{{- if gt (len .Site.Params.themes) 1 -}}
+<script>
+  (function () {
+    'use strict';
+    const styleLink = document.getElementById('theme-style');
+    const themeSelector = document.getElementById('theme-selector-input');
+    const storageKey = 'hugo-classless-theme';
+
+    function setTheme(themeUrl) {
+      styleLink.href = themeUrl;
+      if (themeSelector) {
+        themeSelector.value = themeUrl;
+      }
+    }
+
+    const savedTheme = localStorage.getItem(storageKey);
+    if (savedTheme) {
+      // Check if the saved theme is still a valid option
+      const isValid = Array.from(themeSelector.options).some(opt => opt.value === savedTheme);
+      if (isValid) {
+        setTheme(savedTheme);
+      }
+    }
+
+    if (themeSelector) {
+      themeSelector.addEventListener('change', () => {
+        const selectedTheme = themeSelector.value;
+        setTheme(selectedTheme);
+        localStorage.setItem(storageKey, selectedTheme);
+      });
+    }
+  })();
+</script>
+{{- end -}}

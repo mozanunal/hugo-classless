@@ -1,59 +1,86 @@
-{{- /* layouts/_default/baseof.html */ -}}
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang | default "en" }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
+<html lang="{{ .Site.Language.Lang | default " en" }}">
 
-    <link rel="stylesheet" href="{{ .Site.Params.css }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="color-scheme" content="light dark">
 
-    <title>
-      {{- if .IsHome -}}
-        {{ .Site.Title }}
-      {{- else -}}
-        {{ .Title }} | {{ .Site.Title }}
-      {{- end -}}
-    </title>
+	{{- /* Determine which CSS to load. Defaults to the first theme in the list or the single css param. */ -}}
+	{{- $stylesheet := "" -}}
+	{{- if .Site.Params.themes -}}
+	{{- $stylesheet = (index .Site.Params.themes 0).url -}}
+	{{- else -}}
+	{{- $stylesheet = .Site.Params.css -}}
+	{{- end -}}
+	<link id="theme-style" rel="stylesheet" href="{{ $stylesheet }}">
 
-    {{- /* Favicons are now configurable from hugo.toml */ -}}
-    <link rel="icon" href="{{ .Site.Params.faviconSVG | relURL }}" type="image/svg+xml">
-    <link rel="shortcut icon" href="{{ .Site.Params.faviconICO | relURL }}">
-    <link rel="apple-touch-icon" href="{{ .Site.Params.appleTouchIcon | relURL }}">
-    <link rel="manifest" href="{{ .Site.Params.webmanifest | relURL }}">
+	<title>
+		{{- if .IsHome -}}
+		{{ .Site.Title }}
+		{{- else -}}
+		{{ .Title }} | {{ .Site.Title }}
+		{{- end -}}
+	</title>
 
-  </head>
+	{{- /* Favicons */ -}}
+	<link rel="icon" href="{{ .Site.Params.faviconSVG | relURL }}" type="image/svg+xml">
+	<link rel="shortcut icon" href="{{ .Site.Params.faviconICO | relURL }}">
+	<link rel="apple-touch-icon" href="{{ .Site.Params.appleTouchIcon | relURL }}">
+</head>
 
+<body>
+	<header>
+		<div class="header-content">
+			{{- if and (gt (len .Site.Params.themes) 1) (eq .Site.Params.themeSelectorLocation "header") -}}
+			{{ partial "theme-selector.html" . }}
+			{{- end -}}
+			<nav>
+				<h3>
+					{{ .Site.Title }}
+				</h3>
 
-  <body>
-    <header>
-      {{- /* Site title is pulled from hugo.toml */ -}}
-      <h3><a href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h3>
+				{{- if .Site.Menus.main -}}
 
-      {{- /* Rebuilds your exact "Link | Link | Link" navbar structure from the menu config */ -}}
-      {{ if .Site.Menus.main }}
-      <nav>
-        <h4>
-          {{ $links := slice }}
-          {{ range .Site.Menus.main }}
-            {{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
-            {{ $links = $links | append $link }}
-          {{ end }}
-          {{- delimit $links " | " | safeHTML -}}
-        </h4>
-      </nav>
-      {{ end }}
-    </header>
+				<h4>
+					{{ $links := slice }}
+					{{- range .Site.Menus.main -}}
+					{{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
+					{{ $links = $links | append $link }}
+					{{- end -}}
+					{{- delimit $links " | " | safeHTML -}}
 
-    <main>
-      {{- /* Main content block for other templates */ -}}
-      {{ block "main" . }}{{ end }}
-    </main>
+				</h4>
+			</nav>
+			{{- end -}}
+		</div>
 
-    <footer>
-      <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
-    </footer>
-  </body>
-	{{ if .Params.math}}{{ partial "math.html" . }}{{ end }}
-			{{ template "_internal/google_analytics.html" . }}
+		{{- /* Render theme selector in header if configured and more than one theme exists */ -}}
+
+	</header>
+
+	<main>
+		{{- block "main" . }}{{ end -}}
+	</main>
+
+	<footer>
+		<p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
+
+		{{- /* Render theme selector in footer (default) if more than one theme exists */ -}}
+		{{- if and (gt (len .Site.Params.themes) 1) (ne .Site.Params.themeSelectorLocation "header") -}}
+		{{ partial "theme-selector.html" . }}
+		{{- end -}}
+	</footer>
+
+	{{- if .Site.Params.quicklink -}}
+	<script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" defer></script>
+	<script>
+		window.addEventListener('load', () => {quicklink.listen();});
+	</script>
+	{{- end -}}
+
+</body>
+{{ if .Params.math}}{{ partial "math.html" . }}{{ end }}
+{{ template "_internal/google_analytics.html" . }}
+
 </html>
