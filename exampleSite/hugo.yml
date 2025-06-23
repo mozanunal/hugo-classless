@@ -27,6 +27,8 @@ params:
   themes:
     - name: "Classless.css"
       url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
+    - name: "Cosmo.css"
+      url: "https://cdn.jsdelivr.net/gh/cspablocortez/cosmocss@latest/cosmo.min.css"
     - name: "Pico"
       url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
     - name: "Pico-Fluid"

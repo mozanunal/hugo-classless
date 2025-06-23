@@ -3,7 +3,7 @@
 
   <header>
     {{/* The list's title, e.g., "Posts", is the main heading on this page. */}}
-    <h1>{{ .Title }}</h1>
+    <h3>{{ .Title }}</h3>
     {{/* Render _index.md content if it exists */}}
     {{ if .Content }}
       <div>{{ .Content }}</div>
@@ -16,9 +16,9 @@
   {{ range .Pages.ByDate.Reverse }}
     <article>
       {{/* Post titles in a list are secondary headings */}}
-      <h2>
+      <h4>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
-      </h2>
+      </h4>
       {{ if .Description }}
         <p>{{ .Description }}</p>
       {{ end }}

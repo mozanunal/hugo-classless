@@ -9,19 +9,26 @@ aliases: ["/tests/markdown-test"]
 author: "Specimen Generator"
 ---
 
-Welcome to the Omni-Syntax Specimen file. This document is designed to test the capabilities of a Markdown parser and a static site generator like Hugo. It contains a mix of standard and extended syntax, often in tricky combinations.
+Welcome to the Omni-Syntax Specimen file. This document is designed to test the
+capabilities of a Markdown parser and a static site generator like Hugo. It
+contains a mix of standard and extended syntax, often in tricky combinations.
 
 The summary of this page ends here.
+
 <!--more-->
 
 ## Section 1: Fundamental Elements
 
-This section covers the basics. We have **bold text**, _italic text_, and a combination of ***both***. You can also use ~~strikethrough~~.
+This section covers the basics. We have **bold text**, _italic text_, and a
+combination of _**both**_. You can also use ~~strikethrough~~.
 
-Paragraphs are separated by a blank line. If you need a hard line break,
-you can use two trailing spaces.
+Paragraphs are separated by a blank line. If you need a hard line break, you can
+use two trailing spaces.
 
-Here is a link to [the official Hugo documentation](https://gohugo.io/documentation/). And here is a link with a title attribute: [Markdown Guide](https://www.markdownguide.org/ "A great resource for learning Markdown").
+Here is a link to
+[the official Hugo documentation](https://gohugo.io/documentation/). And here is
+a link with a title attribute:
+[Markdown Guide](https://www.markdownguide.org/ "A great resource for learning Markdown").
 
 ---
 
@@ -29,36 +36,39 @@ Here is a link to [the official Hugo documentation](https://gohugo.io/documentat
 
 Proper indentation is key here.
 
-1.  First ordered list item.
-2.  Second ordered list item, which contains a nested list:
-    *   Unordered sub-item 1.
-    *   Unordered sub-item 2, which in turn has more nesting:
-        1.  Can you believe this? Level three!
-        2.  It just keeps going.
-3.  Third ordered list item. It's important to test that the numbering continues correctly.
+1. First ordered list item.
+2. Second ordered list item, which contains a nested list:
+   - Unordered sub-item 1.
+   - Unordered sub-item 2, which in turn has more nesting:
+     1. Can you believe this? Level three!
+     2. It just keeps going.
+3. Third ordered list item. It's important to test that the numbering continues
+   correctly.
 
 Now for the real challenge. Let's put complex blocks inside a list.
 
-*   A list item with a blockquote:
-    > This blockquote is indented within the list. Rendering this correctly requires the parser to handle context changes gracefully.
+- A list item with a blockquote:
+  > This blockquote is indented within the list. Rendering this correctly
+  > requires the parser to handle context changes gracefully.
 
-*   A list item with a fenced code block:
-    ```javascript
-    // This code is inside a list item!
-    function greet(name) {
-      console.log(`Hello, ${name}!`);
-    }
-    greet('World');
-    ```
+- A list item with a fenced code block:
+  ```javascript
+  // This code is inside a list item!
+  function greet(name) {
+    console.log(`Hello, ${name}!`);
+  }
+  greet("World");
+  ```
 
-*   A task list:
-    - [x] Complete challenge #1: Basic Syntax.
-    - [ ] Complete challenge #2: Nesting.
-    - [ ] Add more challenges.
+- A task list:
+  - [x] Complete challenge #1: Basic Syntax.
+  - [ ] Complete challenge #2: Nesting.
+  - [ ] Add more challenges.
 
 ## Section 3: Code, Quotes, and Images
 
-Inline code is simple: `const a = 1;`. But a full code block with syntax highlighting is more interesting.
+Inline code is simple: `const a = 1;`. But a full code block with syntax
+highlighting is more interesting.
 
 ```python
 # A simple Python script
@@ -90,22 +100,21 @@ And here's an image using standard Markdown syntax, with a link:
 
 This tests alignment and inline markdown rendering within cells.
 
-| Left-Aligned Header | Center-Aligned Header | Right-Aligned Header |
-| :------------------ | :-------------------: | -------------------: |
-| `inline code`       |      **Bold**         |    [Link](https://gohugo.io)    |
-| Cell 2 content      |    *Italic text*      |           `$1,600.00` |
-| A long sentence to test wrapping and layout. | And another one just to be sure. |                      |
-
+| Left-Aligned Header                          |      Center-Aligned Header       |      Right-Aligned Header |
+| :------------------------------------------- | :------------------------------: | ------------------------: |
+| `inline code`                                |             **Bold**             | [Link](https://gohugo.io) |
+| Cell 2 content                               |          _Italic text_           |               `$1,600.00` |
+| A long sentence to test wrapping and layout. | And another one just to be sure. |                           |
 
 ### Footnotes & Definitions
 
-Here is a simple footnote[^1]. And here is a more complex one with more text[^bignote].
+Here is a simple footnote[^1]. And here is a more complex one with more
+text[^bignote].
 
-Definition List
-:   A list where each item has a term and a definition. This is an extended Markdown feature.
+Definition List : A list where each item has a term and a definition. This is an
+extended Markdown feature.
 
-Another Term
-:   Another definition.
+Another Term : Another definition.
 
 <dl>
   <dt>Raw HTML Definition List</dt>
@@ -113,7 +122,9 @@ Another Term
 </dl>
 
 ### Raw HTML Embedding
-Sometimes you need to escape out of Markdown. The `<details>` element is a great test.
+
+Sometimes you need to escape out of Markdown. The `<details>` element is a great
+test.
 
 <details>
   <summary>Click to reveal hidden content</summary>
@@ -127,27 +138,34 @@ Sometimes you need to escape out of Markdown. The `<details>` element is a great
 This section uses features unique to Hugo.
 
 ### Figure Shortcode
-This is the recommended way to handle images in Hugo, as it uses the `<figure>` element.
 
-{{< figure src="https://picsum.photos/id/1025/600/400" title="A Good Dog" caption="This image of a dog is rendered using Hugo's built-in `figure` shortcode." attr="Photo by Picsum" >}}
+This is the recommended way to handle images in Hugo, as it uses the `<figure>`
+element.
+
+{{< figure src="https://picsum.photos/id/1025/600/400" title="A Good Dog"
+caption="This image of a dog is rendered via Hugo's built-in shortcode."
+attr="Photo by Picsum" >}}
 
 ### YouTube Embed
+
 Embedding videos should be easy.
 
 {{< youtube w7Ft2ymGmfc >}}
 
 ### Highlight Shortcode
-An alternative to fenced code blocks that guarantees Hugo's Chroma highlighter is used.
 
-{{% highlight yaml "title=Hugo Config Example" %}}
-baseURL: 'https://example.org/'
-languageCode: 'en-us'
-title: 'My New Hugo Site'
-theme: 'ananke'
-{{% /highlight %}}
+An alternative to fenced code blocks that guarantees Hugo's Chroma highlighter
+is used.
 
+{{% highlight yaml "title=Hugo Config Example" %}} baseURL:
+'https://example.org/' languageCode: 'en-us' title: 'My New Hugo Site' theme:
+'ananke' {{% /highlight %}}
 
-This is the end of the specimen file. If this page rendered perfectly, your setup is robust!
+This is the end of the specimen file. If this page rendered perfectly, your
+setup is robust!
 
 [^1]: This is the first simple footnote.
-[^bignote]: This footnote is much longer. It's designed to see how the renderer handles multi-line footnote definitions. It can contain paragraphs, but let's keep it to a single long one for this test.
+
+[^bignote]: This footnote is much longer. It's designed to see how the renderer
+    handles multi-line footnote definitions. It can contain paragraphs, but
+    let's keep it to a single long one for this test.

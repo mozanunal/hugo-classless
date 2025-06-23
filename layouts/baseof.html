@@ -8,7 +8,7 @@
 
 	{{- $stylesheet := .Site.Params.css -}}
 	{{- if .Site.Params.themes -}}
-		{{- $stylesheet = (index .Site.Params.themes 0).url -}}
+	{{- $stylesheet = (index .Site.Params.themes 0).url -}}
 	{{- end -}}
 	<link id="theme-style" rel="stylesheet" href="{{ $stylesheet }}">
 
@@ -24,10 +24,10 @@
 
 <body>
 	<header>
-		<div class="header-content">
-			{{- if and (gt (len .Site.Params.themes) 1) (eq .Site.Params.themeSelectorLocation "header") -}}
-			{{ partial "theme-selector.html" . }}
-			{{- end -}}
+		{{- if and (gt (len .Site.Params.themes) 1) (eq .Site.Params.themeSelectorLocation "header") -}}
+		{{ partial "theme-selector.html" . }}
+		{{- end -}}
+		<div>
 			<nav>
 				<h3>
 					{{ .Site.Title }}
