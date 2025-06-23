@@ -1,9 +1,11 @@
-+++
-title = 'Home'
-date = 2023-01-01T08:00:00-07:00
-draft = false
-+++
+---
+title: "Hugo Classless Theme"
+---
 
-Laborum voluptate pariatur ex culpa magna nostrud est incididunt fugiat
-pariatur do dolor ipsum enim. Consequat tempor do dolor eu. Non id id anim anim
-excepteur excepteur pariatur nostrud qui irure ullamco.
+Welcome to the example site for the **Hugo Classless** theme, a clean and configurable theme that embraces classless CSS frameworks.
+
+This demo showcases how you can get a beautiful, modern website up and running in minutes without writing a single line of CSS.
+
+- **Check out the [Posts](/posts/)** to see examples of Markdown rendering, including a [complex syntax test](/posts/markdown-challenge/) and a [KaTeX math demo](/posts/math-test/).
+- **Use the theme switcher** in the header to see how the site instantly adapts to different classless frameworks.
+- **View the [Projects](/projects/) and [Contact](/contact/) pages** to see how standard content pages are handled.

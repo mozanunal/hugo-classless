@@ -6,21 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="color-scheme" content="light dark">
 
-	{{- /* Determine which CSS to load. Defaults to the first theme in the list or the single css param. */ -}}
-	{{- $stylesheet := "" -}}
+	{{- $stylesheet := .Site.Params.css -}}
 	{{- if .Site.Params.themes -}}
-	{{- $stylesheet = (index .Site.Params.themes 0).url -}}
-	{{- else -}}
-	{{- $stylesheet = .Site.Params.css -}}
+		{{- $stylesheet = (index .Site.Params.themes 0).url -}}
 	{{- end -}}
 	<link id="theme-style" rel="stylesheet" href="{{ $stylesheet }}">
 
 	<title>
-		{{- if .IsHome -}}
-		{{ .Site.Title }}
-		{{- else -}}
-		{{ .Title }} | {{ .Site.Title }}
-		{{- end -}}
+		{{- if .IsHome -}}{{- .Site.Title -}}{{- else -}}{{- .Title }} | {{ .Site.Title -}}{{- end -}}
 	</title>
 
 	{{- /* Favicons */ -}}
@@ -39,9 +32,7 @@
 				<h3>
 					{{ .Site.Title }}
 				</h3>
-
 				{{- if .Site.Menus.main -}}
-
 				<h4>
 					{{ $links := slice }}
 					{{- range .Site.Menus.main -}}
@@ -49,14 +40,10 @@
 					{{ $links = $links | append $link }}
 					{{- end -}}
 					{{- delimit $links " | " | safeHTML -}}
-
 				</h4>
+				{{- end -}}
 			</nav>
-			{{- end -}}
 		</div>
-
-		{{- /* Render theme selector in header if configured and more than one theme exists */ -}}
-
 	</header>
 
 	<main>
@@ -65,8 +52,6 @@
 
 	<footer>
 		<p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
-
-		{{- /* Render theme selector in footer (default) if more than one theme exists */ -}}
 		{{- if and (gt (len .Site.Params.themes) 1) (ne .Site.Params.themeSelectorLocation "header") -}}
 		{{ partial "theme-selector.html" . }}
 		{{- end -}}

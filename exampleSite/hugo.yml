@@ -7,7 +7,8 @@ baseURL: 'https://hugo-classless.netlify.app/'
 languageCode: 'en-US'
 # The main title for your site. Appears in the header and browser tabs.
 title: 'Hugo Classless Theme'
-# This tells Hugo to use the theme. In an example site, it often refers to the parent directory.
+# This tells Hugo to use the theme.
+# In an example site, it often refers to the parent directory.
 theme: 'hugo-classless'
 
 # --- Custom Theme Parameters ---
@@ -15,15 +16,15 @@ theme: 'hugo-classless'
 params:
   # The author's name, used in the footer.
   author: "John Doe"
-  # A short site description, often used for SEO.
+  # A short site description, often used for SEO meta tags.
   description: "An example site for the clean and configurable Hugo Classless theme."
 
   # --- Stylesheet Configuration ---
   # To enable the live theme-switcher, define a list of two or more themes.
-  # If only one theme is listed, it will be used statically and the selector will be hidden.
+  # The first theme in the list will be the default.
+  # If only one theme is listed (or this section is omitted), it will be used statically
+  # and the theme selector will not be displayed.
   themes:
-    - name: "HTML only"
-      url: ""
     - name: "Classless.css"
       url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
     - name: "Pico"
@@ -34,40 +35,31 @@ params:
       url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
     - name: "Sakura.css"
       url: "https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css"
-    - name: "Classless.de"
-      url: "https://classless.de/classless.min.css"
     - name: "Simple.css"
       url: "https://cdn.simplecss.org/simple.min.css"
     - name: "Almond.css"
       url: "https://cdn.jsdelivr.net/gh/alvaromontoro/almond.css@latest/dist/almond.min.css"
-    - name: "Axist.css"
-      url: "https://unpkg.com/axist@latest/dist/axist.min.css"
-    - name: "Marx.css"
-      url: "https://unpkg.com/marx-css/css/marx.min.css"
-    - name: "PerfectMFWS"
-      url: "https://perfectmotherfuckingwebsite.com/fuckingstyle.css"
     - name: "New.css"
       url: "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
     - name: "Missing.css"
       url: "https://unpkg.com/missing.css"
     - name: "Bolt.css"
       url: "https://unpkg.com/boltcss/bolt.min.css"
-
-
-
-  # The single `css` key is used as a fallback if the `themes` list is not defined.
-  # css: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    - name: "PerfectMFWS"
+      url: "https://perfectmotherfuckingwebsite.com/fuckingstyle.css"
+    - name: "HTML only"
+      url: ""
 
   # Optional: Control the location of the theme selector.
   # Can be 'header' or 'footer'. Defaults to 'footer' if omitted.
   themeSelectorLocation: 'header'
 
-  # You can change the paths to your favicons here.
+  # You can change the paths to your favicons here. They should be placed in your site's `static` directory.
   faviconSVG: "/favicon.svg"
   faviconICO: "/favicon.ico"
   appleTouchIcon: "/apple-touch-icon.png"
 
-  # enable preloading of the links in the viewport
+  # Set to true to enable Quicklink, a library that pre-fetches links in the viewport to make navigation faster.
   quicklink: false
 
 # --- Main Navigation ---
@@ -95,10 +87,10 @@ menu:
 markup:
   goldmark:
     renderer:
-      # This allows raw HTML blocks, which is required for KaTeX to work properly.
+      # This allows raw HTML blocks, which is required for KaTeX and other advanced HTML to work properly.
       unsafe: true
   katex:
-    # Set to true to enable KaTeX processing on pages with math.
+    # Set to true to enable KaTeX processing on pages that have `math: true` in their front matter.
     enabled: true
 
 # --- Hugo Version ---
