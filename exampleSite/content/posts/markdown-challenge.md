@@ -152,15 +152,6 @@ Embedding videos should be easy.
 
 {{< youtube w7Ft2ymGmfc >}}
 
-### Highlight Shortcode
-
-An alternative to fenced code blocks that guarantees Hugo's Chroma highlighter
-is used.
-
-{{% highlight yaml "title=Hugo Config Example" %}} baseURL:
-'https://example.org/' languageCode: 'en-us' title: 'My New Hugo Site' theme:
-'ananke' {{% /highlight %}}
-
 This is the end of the specimen file. If this page rendered perfectly, your
 setup is robust!
 

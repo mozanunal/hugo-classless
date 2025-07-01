@@ -2,65 +2,93 @@
 <html lang="{{ .Site.Language.Lang | default " en" }}">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="color-scheme" content="light dark">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
 
-	{{- $stylesheet := .Site.Params.css -}}
-	{{- if .Site.Params.themes -}}
-	{{- $stylesheet = (index .Site.Params.themes 0).url -}}
-	{{- end -}}
-	<link id="theme-style" rel="stylesheet" href="{{ $stylesheet }}">
 
-	<title>
-		{{- if .IsHome -}}{{- .Site.Title -}}{{- else -}}{{- .Title }} | {{ .Site.Title -}}{{- end -}}
-	</title>
 
-	{{- /* Favicons */ -}}
-	<link rel="icon" href="{{ .Site.Params.faviconSVG | relURL }}" type="image/svg+xml">
-	<link rel="shortcut icon" href="{{ .Site.Params.faviconICO | relURL }}">
-	<link rel="apple-touch-icon" href="{{ .Site.Params.appleTouchIcon | relURL }}">
+  {{- $stylesheet := .Site.Params.css -}}
+  {{- if .Site.Params.themes -}}
+  {{- $stylesheet = (index .Site.Params.themes 0).url -}}
+  {{- end -}}
+  <link id="theme-style" rel="stylesheet" href="{{ $stylesheet }}">
+
+  <style>
+    pre code,
+    code {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    /* ---- fire-wall so frameworks don’t bleed into blocks -------- */
+    pre code.hljs {
+      /* highlight.js wraps tokens in <span class="hljs-…"> */
+      all: revert;
+      /* keep UA defaults, wipe framework styles        */
+      display: block;
+      font: 0.9rem/1.90 ui-monospace, SFMono-Regular, Menlo, monospace;
+      overflow-x: auto;
+    }
+  </style>
+
+  <title>
+    {{- if .IsHome -}}{{- .Site.Title -}}{{- else -}}{{- .Title }} | {{ .Site.Title -}}{{- end -}}
+  </title>
+
+  {{- /* Favicons */ -}}
+  <link rel="icon" href="{{ .Site.Params.faviconSVG | relURL }}" type="image/svg+xml">
+  <link rel="shortcut icon" href="{{ .Site.Params.faviconICO | relURL }}">
+  <link rel="apple-touch-icon" href="{{ .Site.Params.appleTouchIcon | relURL }}">
+
 </head>
 
 <body>
-	<header>
-		{{- if and (gt (len .Site.Params.themes) 1) (eq .Site.Params.themeSelectorLocation "header") -}}
-		{{ partial "theme-selector.html" . }}
-		{{- end -}}
-		<div>
-				<h3>
-					{{ .Site.Title }}
-				</h3>
-				{{- if .Site.Menus.main -}}
-				<h4>
-					{{ $links := slice }}
-					{{- range .Site.Menus.main -}}
-					{{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
-					{{ $links = $links | append $link }}
-					{{- end -}}
-					{{- delimit $links " | " | safeHTML -}}
-				</h4>
-				{{- end -}}
-		</div>
-	</header>
+  <header>
+    {{- if and (gt (len .Site.Params.themes) 1) (eq .Site.Params.themeSelectorLocation "header") -}}
+    {{ partial "theme-selector.html" . }}
+    {{- end -}}
+    <div>
+      <h3>
+        {{ .Site.Title }}
+      </h3>
+      {{- if .Site.Menus.main -}}
+      <h4>
+        {{ $links := slice }}
+        {{- range .Site.Menus.main -}}
+        {{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
+        {{ $links = $links | append $link }}
+        {{- end -}}
+        {{- delimit $links " | " | safeHTML -}}
+      </h4>
+      {{- end -}}
+    </div>
+  </header>
 
-	<main>
-		{{- block "main" . }}{{ end -}}
-	</main>
+  <main>
+    {{- block "main" . }}{{ end -}}
+  </main>
 
-	<footer>
-		<p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
-		{{- if and (gt (len .Site.Params.themes) 1) (ne .Site.Params.themeSelectorLocation "header") -}}
-		{{ partial "theme-selector.html" . }}
-		{{- end -}}
-	</footer>
+  <footer>
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
+    {{- if and (gt (len .Site.Params.themes) 1) (ne .Site.Params.themeSelectorLocation "header") -}}
+    {{ partial "theme-selector.html" . }}
+    {{- end -}}
+  </footer>
 
-	{{- if .Site.Params.quicklink -}}
-	<script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" defer></script>
-	<script>
-		window.addEventListener('load', () => {quicklink.listen();});
-	</script>
-	{{- end -}}
+  {{- if .Site.Params.quicklink -}}
+  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" defer></script>
+  <script>
+    window.addEventListener('load', () => {quicklink.listen();});
+  </script>
+  {{- end -}}
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css"
+    media="(prefers-color-scheme: light)" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css"
+    media="(prefers-color-scheme: dark)" />
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
 
 </body>
 {{ if .Params.math}}{{ partial "math.html" . }}{{ end }}
