@@ -25,24 +25,20 @@ params:
   # If only one theme is listed (or this section is omitted), it will be used statically
   # and the theme selector will not be displayed.
   themes:
-    - name: "Classless.css"
-      url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
     - name: "Cosmo.css"
       url: "https://cdn.jsdelivr.net/gh/cspablocortez/cosmocss@latest/cosmo.min.css"
+    # - name: "Classless.css"
+    #   url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
     - name: "Pico"
       url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
     - name: "Pico-Fluid"
       url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
     - name: "Water.css"
       url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
-    - name: "Sakura.css"
-      url: "https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css"
     - name: "Simple.css"
       url: "https://cdn.simplecss.org/simple.min.css"
     - name: "New.css"
       url: "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    - name: "Bolt.css"
-      url: "https://unpkg.com/boltcss/bolt.min.css"
     - name: "PerfectMFWS"
       url: "https://perfectmotherfuckingwebsite.com/fuckingstyle.css"
     - name: "HTML only"
@@ -91,7 +87,7 @@ markup:
     # Set to true to enable KaTeX processing on pages that have `math: true` in their front matter.
     enabled: true
   highlight:
-    noClasses: true
+    noClasses: false
     codeFences: true
     guessSyntax: true
     # lineNos: true
