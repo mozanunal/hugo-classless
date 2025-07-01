@@ -7,10 +7,10 @@
   <meta name="color-scheme" content="light dark">
 
   <style>
-    pre,
+    pre code,
     code {
-      font-family: 'Fira Code', 'Courier New', monospace;
-      font-size: 0.95rem;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
   </style>
 
@@ -19,6 +19,7 @@
   {{- $stylesheet = (index .Site.Params.themes 0).url -}}
   {{- end -}}
   <link id="theme-style" rel="stylesheet" href="{{ $stylesheet }}">
+
 
   <title>
     {{- if .IsHome -}}{{- .Site.Title -}}{{- else -}}{{- .Title }} | {{ .Site.Title -}}{{- end -}}
