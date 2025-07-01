@@ -94,6 +94,12 @@ markup:
   katex:
     # Set to true to enable KaTeX processing on pages that have `math: true` in their front matter.
     enabled: true
+  highlight:
+    noClasses: true
+    codeFences: true
+    guessSyntax: true
+    # lineNos: true
+    style: onedark
 
 # --- Hugo Version ---
 # Specifies the minimum Hugo version required for this theme to work correctly.

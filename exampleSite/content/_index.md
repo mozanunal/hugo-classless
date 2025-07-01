@@ -37,21 +37,25 @@ This site demonstrates how the theme handles common content types and features.
 Ready to use this for your own site? It's easy.
 
 1. **Add the theme:**
-   ```bash
-   git submodule add https://github.com/mozanunal/hugo-classless.git themes/hugo-classless
-   ```
+
+```bash
+git submodule add \
+    https://github.com/mozanunal/hugo-classless.git \
+    themes/hugo-classless
+```
 
 2. **Configure `hugo.yml`:**
-   ```yaml
-   theme: "hugo-classless"
 
-   params:
-     themes:
-       - name: "Pico"
-         url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-       - name: "Water.css"
-         url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
-   ```
+```yaml
+theme: "hugo-classless"
+
+params:
+ themes:
+   - name: "Pico"
+     url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+   - name: "Water.css"
+     url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+```
 
 For full documentation and more configuration options, check out the project on
 GitHub.
