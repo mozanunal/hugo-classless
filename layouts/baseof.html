@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang | default " en" }}">
+<html lang="{{ .Site.Language.Lang | default "en" }}">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-
-
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
 
   {{- $stylesheet := .Site.Params.css -}}
   {{- if .Site.Params.themes -}}
@@ -83,9 +83,9 @@
   </script>
   {{- end -}}
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css"
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.0/styles/github.min.css"
     media="(prefers-color-scheme: light)" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css"
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.0/styles/github-dark.min.css"
     media="(prefers-color-scheme: dark)" />
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>
