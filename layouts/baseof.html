@@ -49,18 +49,21 @@
     {{ partial "theme-selector.html" . }}
     {{- end -}}
     <div>
-      <h3>
+      <h1>
         {{ .Site.Title }}
-      </h3>
+      </h1>
+
       {{- if .Site.Menus.main -}}
-      <h4>
-        {{ $links := slice }}
-        {{- range .Site.Menus.main -}}
-        {{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
-        {{ $links = $links | append $link }}
-        {{- end -}}
-        {{- delimit $links " | " | safeHTML -}}
-      </h4>
+      <nav>
+        <p>
+          {{ $links := slice }}
+          {{- range .Site.Menus.main -}}
+          {{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
+          {{ $links = $links | append $link }}
+          {{- end -}}
+          {{- delimit $links " | " | safeHTML -}}
+        </p>
+      </nav>
       {{- end -}}
     </div>
   </header>
