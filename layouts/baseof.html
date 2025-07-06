@@ -21,7 +21,7 @@
       text-size-adjust: 100%;
     }
 
-    /* ---- fire-wall so frameworks don’t bleed into blocks -------- */
+    /* fire-wall the code blocks so hljs can do it job */
     pre code.hljs {
       /* highlight.js wraps tokens in <span class="hljs-…"> */
       all: revert;
@@ -29,6 +29,16 @@
       display: block;
       font: 0.9rem/1.90 ui-monospace, SFMono-Regular, Menlo, monospace;
       overflow-x: auto;
+    }
+
+
+    /* always center images */
+    p>img {
+      display: block;
+      /* Make the image a block element */
+      margin-left: auto;
+      /* A_uto-magically centers block elements */
+      margin-right: auto;
     }
   </style>
 
