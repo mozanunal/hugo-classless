@@ -19,32 +19,7 @@
     integrity="{{ $stylesheet_res.Data.Integrity }}">
   {{- end -}}
 
-  <style>
-    pre code,
-    code {
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
-
-    /* fire-wall the code blocks so hljs can do it job */
-    pre code.hljs {
-      all: revert;
-      display: block;
-      overflow-x: auto;
-    }
-
-    /* always center images */
-    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    figcaption {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
+  {{- partial "css-overwrite.html" -}}
 
   <title>
     {{- if .IsHome -}}{{- .Site.Title -}}{{- else -}}{{- .Title }} | {{ .Site.Title -}}{{- end -}}
