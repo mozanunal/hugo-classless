@@ -3,13 +3,13 @@
 
 # --- Core Site Configuration ---
 # IMPORTANT: Change this to your site's final domain.
-baseURL: 'https://hugo-classless.netlify.app/'
-languageCode: 'en-US'
+baseURL: "https://hugo-classless.netlify.app/"
+languageCode: "en-US"
 # The main title for your site. Appears in the header and browser tabs.
-title: 'Hugo Classless Theme'
+title: "Hugo Classless Theme"
 # This tells Hugo to use the theme.
 # In an example site, it often refers to the parent directory.
-theme: 'hugo-classless'
+theme: "hugo-classless"
 
 # --- Custom Theme Parameters ---
 # These are variables created by the theme. You can customize them here.
@@ -20,33 +20,31 @@ params:
   description: "An example site for the clean and configurable Hugo Classless theme."
 
   # --- Stylesheet Configuration ---
+  # Production mode
+  theme: "css/classless.css"
+  # theme: https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css
+
   # To enable the live theme-switcher, define a list of two or more themes.
   # The first theme in the list will be the default.
-  # If only one theme is listed (or this section is omitted), it will be used statically
-  # and the theme selector will not be displayed.
-  themes:
-    - name: "Cosmo.css"
-      url: "https://cdn.jsdelivr.net/gh/cspablocortez/cosmocss@latest/cosmo.min.css"
-    # - name: "Classless.css"
-    #   url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
-    - name: "Pico"
-      url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-    - name: "Pico-Fluid"
-      url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
-    - name: "Water.css"
-      url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
-    - name: "Simple.css"
-      url: "https://cdn.simplecss.org/simple.min.css"
-    - name: "New.css"
-      url: "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    - name: "PerfectMFWS"
-      url: "https://perfectmotherfuckingwebsite.com/fuckingstyle.css"
-    - name: "HTML only"
-      url: ""
-
-  # Optional: Control the location of the theme selector.
-  # Can be 'header' or 'footer'. Defaults to 'footer' if omitted.
-  themeSelectorLocation: 'header'
+  # themes:
+  #   - name: "Cosmo.css"
+  #     url: "https://cdn.jsdelivr.net/gh/cspablocortez/cosmocss@latest/cosmo.min.css"
+  #   - name: "Classless.css"
+  #     url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
+  #   - name: "Pico"
+  #     url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+  #   - name: "Pico-Fluid"
+  #     url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
+  #   - name: "Water.css"
+  #     url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+  #   - name: "Simple.css"
+  #     url: "https://cdn.simplecss.org/simple.min.css"
+  #   - name: "New.css"
+  #     url: "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+  #   - name: "PerfectMFWS"
+  #     url: "https://perfectmotherfuckingwebsite.com/fuckingstyle.css"
+  #   - name: "HTML only"
+  #     url: ""
 
   # You can change the paths to your favicons here. They should be placed in your site's `static` directory.
   faviconSVG: "/favicon.svg"
@@ -56,23 +54,26 @@ params:
   # Set to true to enable Quicklink, a library that pre-fetches links in the viewport to make navigation faster.
   quicklink: false
 
+  # Set to true on a page's front matter to enable client-side syntax highlighting.
+  hljs: true
+
 # --- Main Navigation ---
 # This section controls the main navigation bar.
 # Add, remove, or reorder links by editing the entries below.
 # 'weight' determines the order (lower numbers appear first).
 menu:
   main:
-    - name: 'Home'
-      pageRef: '/'
+    - name: "Home"
+      pageRef: "/"
       weight: 10
-    - name: 'Posts'
-      pageRef: '/posts'
+    - name: "Posts"
+      pageRef: "/posts"
       weight: 20
-    - name: 'Projects'
-      pageRef: '/projects'
+    - name: "Projects"
+      pageRef: "/projects"
       weight: 30
-    - name: 'Contact'
-      pageRef: '/contact'
+    - name: "Contact"
+      pageRef: "/contact"
       weight: 40
 
 # --- Optional: Math Typesetting (KaTeX) ---
@@ -87,8 +88,10 @@ markup:
     # Set to true to enable KaTeX processing on pages that have `math: true` in their front matter.
     enabled: true
   highlight:
-    noClasses: false
-    codeFences: false
+    # Set `noClasses` to true to prevent Hugo from injecting syntax highlighting classes.
+    # This is required for the client-side highlight.js (hljs) library to work correctly.
+    noClasses: true
+    codeFences: true
     guessSyntax: true
     # lineNos: true
     style: nord
@@ -98,4 +101,4 @@ markup:
 module:
   hugoVersion:
     extended: false
-    min: '0.116.0'
+    min: "0.116.0"

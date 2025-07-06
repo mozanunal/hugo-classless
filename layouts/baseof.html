@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang | default "en" }}">
+<html lang="{{ .Site.Language.Lang | default " en" }}">
 
 <head>
   <meta charset="utf-8">
@@ -8,11 +8,18 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
 
-  {{- $stylesheet := .Site.Params.css -}}
+  <!-- production mode -->
+  {{- if .Site.Params.theme -}}
+  {{/* Use toCSS to process CSS files, which prevents type errors with recent Hugo versions. */}}
+  {{ $stylesheet := resources.Get .Site.Params.theme | toCSS (dict "minify" true) | fingerprint }}
+  <link rel="stylesheet" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}">
+  {{- end -}}
+
+  <!-- demo mode -->
   {{- if .Site.Params.themes -}}
   {{- $stylesheet = (index .Site.Params.themes 0).url -}}
-  {{- end -}}
   <link id="theme-style" rel="stylesheet" href="{{ $stylesheet }}">
+  {{- end -}}
 
   <style>
     pre code,
@@ -22,14 +29,14 @@
     }
 
     /* fire-wall the code blocks so hljs can do it job */
-    pre code.hljs {
-      /* highlight.js wraps tokens in <span class="hljs-…"> */
-      all: revert;
-      /* keep UA defaults, wipe framework styles        */
-      display: block;
-      font: 0.9rem/1.90 ui-monospace, SFMono-Regular, Menlo, monospace;
-      overflow-x: auto;
-    }
+    /* pre code.hljs { */
+    /*   /* highlight.js wraps tokens in <span class="hljs-…"> */ */
+    /*   all: revert; */
+    /*   /* keep UA defaults, wipe framework styles        */ */
+    /*   display: block; */
+    /*   font: 0.9rem/1.90 ui-monospace, SFMono-Regular, Menlo, monospace; */
+    /*   overflow-x: auto; */
+    /* } */
 
 
     /* always center images */
@@ -55,7 +62,7 @@
 
 <body>
   <header>
-    {{- if and (gt (len .Site.Params.themes) 1) (eq .Site.Params.themeSelectorLocation "header") -}}
+    {{- if .Site.Params.themes -}}
     {{ partial "theme-selector.html" . }}
     {{- end -}}
     <div>
@@ -84,7 +91,8 @@
 
   <footer>
     <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
-    {{- if and (gt (len .Site.Params.themes) 1) (ne .Site.Params.themeSelectorLocation "header") -}}
+    {{- /* FIX: Check for .Site.Params.themes *before* trying to check its length to prevent errors */ -}}
+    {{- if and .Site.Params.themes (gt (len .Site.Params.themes) 1) (ne .Site.Params.themeSelectorLocation "header") -}}
     {{ partial "theme-selector.html" . }}
     {{- end -}}
   </footer>
@@ -96,15 +104,11 @@
   </script>
   {{- end -}}
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.0/styles/github.min.css"
-    media="(prefers-color-scheme: light)" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.0/styles/github-dark.min.css"
-    media="(prefers-color-scheme: dark)" />
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+
 
 </body>
-{{ if .Params.math}}{{ partial "math.html" . }}{{ end }}
+{{ if or .Params.hljs .Site.Params.hljs }}{{ partial "hljs.html" . }}{{ end }}
+{{ if or .Params.math .Site.Params.math }}{{ partial "math.html" . }}{{ end }}
 {{ template "_internal/google_analytics.html" . }}
 
 </html>
