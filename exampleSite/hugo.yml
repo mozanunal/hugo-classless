@@ -26,25 +26,25 @@ params:
 
   # To enable the live theme-switcher, define a list of two or more themes.
   # The first theme in the list will be the default.
-  themes:
-    - name: "Cosmo.css"
-      url: "https://cdn.jsdelivr.net/gh/cspablocortez/cosmocss@latest/cosmo.min.css"
-    - name: "Classless.css"
-      url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
-    - name: "Pico"
-      url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-    - name: "Pico-Fluid"
-      url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
-    - name: "Water.css"
-      url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
-    - name: "Simple.css"
-      url: "https://cdn.simplecss.org/simple.min.css"
-    - name: "New.css"
-      url: "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    - name: "PerfectMFWS"
-      url: "https://perfectmotherfuckingwebsite.com/fuckingstyle.css"
-    - name: "HTML only"
-      url: ""
+  # themes:
+  #   - name: "Cosmo.css"
+  #     url: "https://cdn.jsdelivr.net/gh/cspablocortez/cosmocss@latest/cosmo.min.css"
+  #   - name: "Classless.css"
+  #     url: "https://cdn.jsdelivr.net/gh/digitallytailored/classless@latest/classless.min.css"
+  #   - name: "Pico"
+  #     url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+  #   - name: "Pico-Fluid"
+  #     url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
+  #   - name: "Water.css"
+  #     url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+  #   - name: "Simple.css"
+  #     url: "https://cdn.simplecss.org/simple.min.css"
+  #   - name: "New.css"
+  #     url: "https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+  #   - name: "PerfectMFWS"
+  #     url: "https://perfectmotherfuckingwebsite.com/fuckingstyle.css"
+  #   - name: "HTML only"
+  #     url: ""
 
   # You can change the paths to your favicons here. They should be placed in your site's `static` directory.
   faviconSVG: "/favicon.svg"
@@ -53,9 +53,6 @@ params:
 
   # Set to true to enable Quicklink, a library that pre-fetches links in the viewport to make navigation faster.
   quicklink: false
-
-  # Set to true on a page's front matter to enable client-side syntax highlighting.
-  hljs: true
 
 # --- Main Navigation ---
 # This section controls the main navigation bar.
@@ -88,13 +85,11 @@ markup:
     # Set to true to enable KaTeX processing on pages that have `math: true` in their front matter.
     enabled: true
   highlight:
-    # Set `noClasses` to true to prevent Hugo from injecting syntax highlighting classes.
-    # This is required for the client-side highlight.js (hljs) library to work correctly.
     noClasses: false
-    codeFences: false
+    codeFences: true
     guessSyntax: true
     # lineNos: true
-    style: onedark
+    style: nord
 
 # --- Hugo Version ---
 # Specifies the minimum Hugo version required for this theme to work correctly.

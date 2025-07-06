@@ -20,6 +20,7 @@
   {{- end -}}
 
   {{- partial "css-overwrite.html" -}}
+  {{- partial "syntax.html" -}}
 
   <title>
     {{- if .IsHome -}}{{- .Site.Title -}}{{- else -}}{{- .Title }} | {{ .Site.Title -}}{{- end -}}
@@ -71,7 +72,6 @@
 
 </body>
 {{ if or .Params.quickjs .Site.Params.quickjs }}{{ partial "quickjs.html" . }}{{ end }}
-{{ if or .Params.hljs .Site.Params.hljs }}{{ partial "hljs.html" . }}{{ end }}
 {{ if or .Params.math .Site.Params.math }}{{ partial "math.html" . }}{{ end }}
 {{ template "_internal/google_analytics.html" . }}
 
