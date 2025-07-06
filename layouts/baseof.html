@@ -8,17 +8,15 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
 
-  <!-- production mode -->
-  {{- if .Site.Params.theme -}}
-  {{/* Use toCSS to process CSS files, which prevents type errors with recent Hugo versions. */}}
-  {{ $stylesheet := resources.Get .Site.Params.theme | toCSS (dict "minify" true) | fingerprint }}
-  <link rel="stylesheet" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}">
-  {{- end -}}
-
-  <!-- demo mode -->
   {{- if .Site.Params.themes -}}
-  {{- $stylesheet = (index .Site.Params.themes 0).url -}}
-  <link id="theme-style" rel="stylesheet" href="{{ $stylesheet }}">
+  {{/* Demo mode takes precedence: Use the first theme from the list by default. */}}
+  {{- $stylesheet_url := (index .Site.Params.themes 0).url -}}
+  <link id="theme-style" rel="stylesheet" href="{{ $stylesheet_url }}">
+  {{- else if .Site.Params.theme -}}
+  {{/* Production mode: Use the single specified theme from local resources. */}}
+  {{- $stylesheet_res := resources.Get .Site.Params.theme | toCSS (dict "minify" true) | fingerprint -}}
+  <link id="theme-style" rel="stylesheet" href="{{ $stylesheet_res.RelPermalink }}"
+    integrity="{{ $stylesheet_res.Data.Integrity }}">
   {{- end -}}
 
   <style>
@@ -29,22 +27,21 @@
     }
 
     /* fire-wall the code blocks so hljs can do it job */
-    /* pre code.hljs { */
-    /*   /* highlight.js wraps tokens in <span class="hljs-…"> */ */
-    /*   all: revert; */
-    /*   /* keep UA defaults, wipe framework styles        */ */
-    /*   display: block; */
-    /*   font: 0.9rem/1.90 ui-monospace, SFMono-Regular, Menlo, monospace; */
-    /*   overflow-x: auto; */
-    /* } */
-
+    pre code.hljs {
+      all: revert;
+      display: block;
+      overflow-x: auto;
+    }
 
     /* always center images */
-    p>img {
+    img {
       display: block;
-      /* Make the image a block element */
       margin-left: auto;
-      /* A_uto-magically centers block elements */
+      margin-right: auto;
+    }
+    figcaption {
+      display: block;
+      margin-left: auto;
       margin-right: auto;
     }
   </style>
@@ -91,22 +88,14 @@
 
   <footer>
     <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
-    {{- /* FIX: Check for .Site.Params.themes *before* trying to check its length to prevent errors */ -}}
-    {{- if and .Site.Params.themes (gt (len .Site.Params.themes) 1) (ne .Site.Params.themeSelectorLocation "header") -}}
-    {{ partial "theme-selector.html" . }}
-    {{- end -}}
   </footer>
 
-  {{- if .Site.Params.quicklink -}}
-  <script src="https://unpkg.com/quicklink@2.3.0/dist/quicklink.umd.js" defer></script>
-  <script>
-    window.addEventListener('load', () => {quicklink.listen();});
-  </script>
-  {{- end -}}
+
 
 
 
 </body>
+{{ if or .Params.quickjs .Site.Params.quickjs }}{{ partial "quickjs.html" . }}{{ end }}
 {{ if or .Params.hljs .Site.Params.hljs }}{{ partial "hljs.html" . }}{{ end }}
 {{ if or .Params.math .Site.Params.math }}{{ partial "math.html" . }}{{ end }}
 {{ template "_internal/google_analytics.html" . }}
