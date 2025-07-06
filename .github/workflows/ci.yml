@@ -33,7 +33,7 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
-          # extended: true # Uncomment if you use Sass/SCSS
+          extended: true # Uncomment if you use Sass/SCSS
 
       # 3. Builds the Hugo site
       - name: Build
