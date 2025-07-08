@@ -19,8 +19,8 @@
     integrity="{{ $stylesheet_res.Data.Integrity }}">
   {{- end -}}
 
-  {{- partial "css-overwrite.html" -}}
-  {{- partial "syntax.html" -}}
+  {{- partial "css-overwrite.html" . -}}
+  {{- partial "syntax.html" . -}}
 
   <title>
     {{- if .IsHome -}}{{- .Site.Title -}}{{- else -}}{{- .Title }} | {{ .Site.Title -}}{{- end -}}
@@ -66,13 +66,10 @@
     <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.author }}.</p>
   </footer>
 
-
-
-
-
 </body>
 {{ if or .Params.quickjs .Site.Params.quickjs }}{{ partial "quickjs.html" . }}{{ end }}
 {{ if or .Params.math .Site.Params.math }}{{ partial "math.html" . }}{{ end }}
+{{ partial "mermaid.html" . }}
 {{ template "_internal/google_analytics.html" . }}
 
 </html>

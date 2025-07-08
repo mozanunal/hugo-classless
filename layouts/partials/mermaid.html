@@ -1,0 +1,16 @@
+{{ if .Page.Store.Get "hasMermaid" }}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+
+  // Set a default theme
+  let mermaidTheme = "default";
+
+  // Use a media query to check the user's OS/browser preference for dark mode
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    mermaidTheme = "dark";
+  }
+
+  // Initialize Mermaid with the determined theme
+  mermaid.initialize({startOnLoad: true, theme: mermaidTheme});
+</script>
+{{ end }}
