@@ -1,24 +1,24 @@
 <!-- KaTeX CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="/libs/katex/katex.min.v0.16.9.css">
 
 <!-- KaTeX JS -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="/libs/katex/katex.min.v0.16.9.js"></script>
 
 <!-- KaTeX auto-render extension -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="/libs/katex/auto-render.v0.16.9.js"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // A list of delimiters to look for.
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '\\[', right: '\\]', display: true},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '$', right: '$', display: false}
-          ],
-          // Custom behavior for errors
-          throwOnError : false
-        });
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      // A list of delimiters to look for.
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '$', right: '$', display: false}
+      ],
+      // Custom behavior for errors
+      throwOnError: false
     });
+  });
 </script>

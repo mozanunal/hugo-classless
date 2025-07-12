@@ -45,14 +45,14 @@
 
       {{- if .Site.Menus.main -}}
       <nav>
-        <p>
+        <h4>
           {{ $links := slice }}
           {{- range .Site.Menus.main -}}
           {{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
           {{ $links = $links | append $link }}
           {{- end -}}
           {{- delimit $links " | " | safeHTML -}}
-        </p>
+        </h4>
       </nav>
       {{- end -}}
     </div>

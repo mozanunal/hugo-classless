@@ -1,0 +1,13 @@
+name = "Hugo Classless"
+license = "MIT"
+licenseLink = "https://github.com/mozanunal/hugo-classless/blob/main/LICENSE"
+description = "A flexible Hugo foundation designed to work with any classless CSS framework. It provides clean, semantic HTML, allowing you to plug and play different stylesheets like Pico.css, Water.css, and more."
+homepage = "https://github.com/mozanunal/hugo-classless"
+demosite = "https://hugo-classless.netlify.app/"
+tags = ["blog", "minimal", "responsive", "simple", "semantic", "classless", "katex"]
+features = ["Use any classless CSS framework", "Live theme switcher", "KaTeX for math typesetting", "SEO friendly semantic HTML", "Fully configurable"]
+min_version = "0.125.0"
+
+[author]
+  name = "M.Ozan Unal"
+  homepage = "https://github.com/mozanunal"
