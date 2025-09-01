@@ -1,86 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Hugo Classless Theme</title><link>https://hugo-classless.netlify.app/posts/</link><description>Recent content in Posts on Hugo Classless Theme</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Fri, 27 Oct 2023 10:00:00 -0500</lastBuildDate><atom:link href="https://hugo-classless.netlify.app/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>A Challenging Markdown Test Page</title><link>https://hugo-classless.netlify.app/posts/markdown-challenge/</link><pubDate>Fri, 27 Oct 2023 10:00:00 -0500</pubDate><guid>https://hugo-classless.netlify.app/posts/markdown-challenge/</guid><description>&lt;p>Welcome to the Omni-Syntax Specimen file. This document is designed to test the
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Hugo Classless Theme</title><link>https://hugo-classless.netlify.app/posts/</link><description>Recent content in Posts on Hugo Classless Theme</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Fri, 27 Oct 2023 10:00:00 -0500</lastBuildDate><atom:link href="https://hugo-classless.netlify.app/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>A Challenging Markdown Test Page</title><link>https://hugo-classless.netlify.app/posts/markdown-challenge/</link><pubDate>Fri, 27 Oct 2023 10:00:00 -0500</pubDate><guid>https://hugo-classless.netlify.app/posts/markdown-challenge/</guid><description>&lt;p&gt;Welcome to the Omni-Syntax Specimen file. This document is designed to test the
 capabilities of a Markdown parser and a static site generator like Hugo. It
-contains a mix of standard and extended syntax, often in tricky combinations.&lt;/p>
-&lt;p>The summary of this page ends here.&lt;/p></description></item><item><title>Mathematical Typesetting Test</title><link>https://hugo-classless.netlify.app/posts/math-test/</link><pubDate>Wed, 15 Feb 2023 10:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/math-test/</guid><description>&lt;p>This page tests the mathematical typesetting capabilities of the site, which are powered by KaTeX.&lt;/p>
-&lt;p>&lt;strong>Note:&lt;/strong> For this to render correctly, KaTeX support must be enabled in your site&amp;rsquo;s configuration. See the Hugo documentation for details.&lt;/p>
-&lt;hr>
-&lt;h3 id="inline-formulas">Inline Formulas&lt;/h3>
-&lt;p>Mathematical formulas can be included directly in a sentence. For example, the famous Pythagorean theorem is written as \( a^2 + b^2 = c^2 \). Another common inline formula is Euler&amp;rsquo;s identity, \( e^{i\pi} + 1 = 0 \), which beautifully connects five fundamental mathematical constants.&lt;/p></description></item><item><title>Diagram Testing</title><link>https://hugo-classless.netlify.app/posts/diagram/</link><pubDate>Wed, 15 Feb 2023 09:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/diagram/</guid><description>&lt;h1 id="hey">Hey&lt;/h1>
-&lt;h2 id="goat-diagrams">Goat Diagrams&lt;/h2>
+contains a mix of standard and extended syntax, often in tricky combinations.&lt;/p&gt;
+&lt;p&gt;The summary of this page ends here.&lt;/p&gt;</description></item><item><title>Mathematical Typesetting Test</title><link>https://hugo-classless.netlify.app/posts/math-test/</link><pubDate>Wed, 15 Feb 2023 10:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/math-test/</guid><description>&lt;p&gt;This page tests the mathematical typesetting capabilities of the site, which are powered by KaTeX.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; For this to render correctly, KaTeX support must be enabled in your site&amp;rsquo;s configuration. See the Hugo documentation for details.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="inline-formulas"&gt;Inline Formulas&lt;/h3&gt;
+&lt;p&gt;Mathematical formulas can be included directly in a sentence. For example, the famous Pythagorean theorem is written as \( a^2 + b^2 = c^2 \). Another common inline formula is Euler&amp;rsquo;s identity, \( e^{i\pi} + 1 = 0 \), which beautifully connects five fundamental mathematical constants.&lt;/p&gt;</description></item><item><title>Diagram Testing</title><link>https://hugo-classless.netlify.app/posts/diagram/</link><pubDate>Wed, 15 Feb 2023 09:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/diagram/</guid><description>&lt;h1 id="hey"&gt;Hey&lt;/h1&gt;
+&lt;h2 id="goat-diagrams"&gt;Goat Diagrams&lt;/h2&gt;
 
 
 
-&lt;div class="goat svg-container ">
+&lt;div class="goat svg-container "&gt;
  
  &lt;svg
  xmlns="http://www.w3.org/2000/svg"
  font-family="Menlo,Lucida Console,monospace"
  
  viewBox="0 0 376 137"
- >
- &lt;g transform='translate(8,16)'>
-&lt;path d='M 0,0 L 72,0' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 80,16 L 96,16' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 128,32 L 184,32' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 216,32 L 272,32' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 304,32 L 360,32' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 0,48 L 72,48' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 96,48 L 120,48' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 192,48 L 208,48' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 280,48 L 296,48' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 128,64 L 184,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 216,64 L 272,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 304,64 L 360,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 0,80 L 72,80' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 80,96 L 96,96' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 0,112 L 72,112' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 0,0 L 0,48' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 0,80 L 0,112' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 72,0 L 72,48' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 72,80 L 72,112' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 96,16 L 96,48' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 96,48 L 96,96' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 128,32 L 128,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 184,32 L 184,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 216,32 L 216,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 272,32 L 272,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 304,32 L 304,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;path d='M 360,32 L 360,64' fill='none' stroke='currentColor'>&lt;/path>
-&lt;polygon points='128.000000,48.000000 116.000000,42.400002 116.000000,53.599998' fill='currentColor' transform='rotate(0.000000, 120.000000, 48.000000)'>&lt;/polygon>
-&lt;polygon points='216.000000,48.000000 204.000000,42.400002 204.000000,53.599998' fill='currentColor' transform='rotate(0.000000, 208.000000, 48.000000)'>&lt;/polygon>
-&lt;polygon points='304.000000,48.000000 292.000000,42.400002 292.000000,53.599998' fill='currentColor' transform='rotate(0.000000, 296.000000, 48.000000)'>&lt;/polygon>
-&lt;text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>H&lt;/text>
-&lt;text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>T&lt;/text>
-&lt;text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'>H&lt;/text>
-&lt;text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>e&lt;/text>
-&lt;text text-anchor='middle' x='24' y='36' fill='currentColor' style='font-size:1em'>e&lt;/text>
-&lt;text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'>e&lt;/text>
-&lt;text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'>y&lt;/text>
-&lt;text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>s&lt;/text>
-&lt;text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'>y&lt;/text>
-&lt;text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>t&lt;/text>
-&lt;text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>1&lt;/text>
-&lt;text text-anchor='middle' x='48' y='100' fill='currentColor' style='font-size:1em'>2&lt;/text>
-&lt;text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>2&lt;/text>
-&lt;text text-anchor='middle' x='144' y='52' fill='currentColor' style='font-size:1em'>T&lt;/text>
-&lt;text text-anchor='middle' x='152' y='52' fill='currentColor' style='font-size:1em'>e&lt;/text>
-&lt;text text-anchor='middle' x='160' y='52' fill='currentColor' style='font-size:1em'>s&lt;/text>
-&lt;text text-anchor='middle' x='168' y='52' fill='currentColor' style='font-size:1em'>t&lt;/text>
-&lt;text text-anchor='middle' x='232' y='52' fill='currentColor' style='font-size:1em'>T&lt;/text>
-&lt;text text-anchor='middle' x='240' y='52' fill='currentColor' style='font-size:1em'>e&lt;/text>
-&lt;text text-anchor='middle' x='248' y='52' fill='currentColor' style='font-size:1em'>s&lt;/text>
-&lt;text text-anchor='middle' x='256' y='52' fill='currentColor' style='font-size:1em'>t&lt;/text>
-&lt;text text-anchor='middle' x='320' y='52' fill='currentColor' style='font-size:1em'>T&lt;/text>
-&lt;text text-anchor='middle' x='328' y='52' fill='currentColor' style='font-size:1em'>e&lt;/text>
-&lt;text text-anchor='middle' x='336' y='52' fill='currentColor' style='font-size:1em'>s&lt;/text>
-&lt;text text-anchor='middle' x='344' y='52' fill='currentColor' style='font-size:1em'>t&lt;/text>
-&lt;/g>
+ &gt;
+ &lt;g transform='translate(8,16)'&gt;
+&lt;path d='M 0,0 L 72,0' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 80,16 L 96,16' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 128,32 L 184,32' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 216,32 L 272,32' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 304,32 L 360,32' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 0,48 L 72,48' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 96,48 L 120,48' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 192,48 L 208,48' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 280,48 L 296,48' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 128,64 L 184,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 216,64 L 272,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 304,64 L 360,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 0,80 L 72,80' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 80,96 L 96,96' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 0,112 L 72,112' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 0,0 L 0,48' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 0,80 L 0,112' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 72,0 L 72,48' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 72,80 L 72,112' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 96,16 L 96,48' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 96,48 L 96,96' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 128,32 L 128,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 184,32 L 184,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 216,32 L 216,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 272,32 L 272,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 304,32 L 304,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;path d='M 360,32 L 360,64' fill='none' stroke='currentColor'&gt;&lt;/path&gt;
+&lt;polygon points='128.000000,48.000000 116.000000,42.400002 116.000000,53.599998' fill='currentColor' transform='rotate(0.000000, 120.000000, 48.000000)'&gt;&lt;/polygon&gt;
+&lt;polygon points='216.000000,48.000000 204.000000,42.400002 204.000000,53.599998' fill='currentColor' transform='rotate(0.000000, 208.000000, 48.000000)'&gt;&lt;/polygon&gt;
+&lt;polygon points='304.000000,48.000000 292.000000,42.400002 292.000000,53.599998' fill='currentColor' transform='rotate(0.000000, 296.000000, 48.000000)'&gt;&lt;/polygon&gt;
+&lt;text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'&gt;H&lt;/text&gt;
+&lt;text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'&gt;T&lt;/text&gt;
+&lt;text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'&gt;H&lt;/text&gt;
+&lt;text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'&gt;e&lt;/text&gt;
+&lt;text text-anchor='middle' x='24' y='36' fill='currentColor' style='font-size:1em'&gt;e&lt;/text&gt;
+&lt;text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'&gt;e&lt;/text&gt;
+&lt;text text-anchor='middle' x='32' y='20' fill='currentColor' style='font-size:1em'&gt;y&lt;/text&gt;
+&lt;text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'&gt;s&lt;/text&gt;
+&lt;text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'&gt;y&lt;/text&gt;
+&lt;text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'&gt;t&lt;/text&gt;
+&lt;text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'&gt;1&lt;/text&gt;
+&lt;text text-anchor='middle' x='48' y='100' fill='currentColor' style='font-size:1em'&gt;2&lt;/text&gt;
+&lt;text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'&gt;2&lt;/text&gt;
+&lt;text text-anchor='middle' x='144' y='52' fill='currentColor' style='font-size:1em'&gt;T&lt;/text&gt;
+&lt;text text-anchor='middle' x='152' y='52' fill='currentColor' style='font-size:1em'&gt;e&lt;/text&gt;
+&lt;text text-anchor='middle' x='160' y='52' fill='currentColor' style='font-size:1em'&gt;s&lt;/text&gt;
+&lt;text text-anchor='middle' x='168' y='52' fill='currentColor' style='font-size:1em'&gt;t&lt;/text&gt;
+&lt;text text-anchor='middle' x='232' y='52' fill='currentColor' style='font-size:1em'&gt;T&lt;/text&gt;
+&lt;text text-anchor='middle' x='240' y='52' fill='currentColor' style='font-size:1em'&gt;e&lt;/text&gt;
+&lt;text text-anchor='middle' x='248' y='52' fill='currentColor' style='font-size:1em'&gt;s&lt;/text&gt;
+&lt;text text-anchor='middle' x='256' y='52' fill='currentColor' style='font-size:1em'&gt;t&lt;/text&gt;
+&lt;text text-anchor='middle' x='320' y='52' fill='currentColor' style='font-size:1em'&gt;T&lt;/text&gt;
+&lt;text text-anchor='middle' x='328' y='52' fill='currentColor' style='font-size:1em'&gt;e&lt;/text&gt;
+&lt;text text-anchor='middle' x='336' y='52' fill='currentColor' style='font-size:1em'&gt;s&lt;/text&gt;
+&lt;text text-anchor='middle' x='344' y='52' fill='currentColor' style='font-size:1em'&gt;t&lt;/text&gt;
+&lt;/g&gt;
 
- &lt;/svg>
+ &lt;/svg&gt;
  
-&lt;/div>
-&lt;h2 id="mermaid-diagrams">Mermaid Diagrams&lt;/h2>
-&lt;pre class="mermaid">
+&lt;/div&gt;
+&lt;h2 id="mermaid-diagrams"&gt;Mermaid Diagrams&lt;/h2&gt;
+&lt;pre class="mermaid"&gt;
  graph LR
  %% Define Nodes with better shapes
  A([Start])
@@ -95,5 +95,5 @@ contains a mix of standard and extended syntax, often in tricky combinations.&lt
  B -- No --&amp;gt; D
  D --&amp;gt; B
  C --&amp;gt; E
-&lt;/pre></description></item><item><title>Post 1</title><link>https://hugo-classless.netlify.app/posts/post-1/</link><pubDate>Sun, 15 Jan 2023 09:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/post-1/</guid><description>&lt;p>Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat incididunt do nisi Lorem. Tempor do laborum elit laboris excepteur eiusmod do. Eiusmod nisi excepteur ut amet pariatur adipisicing Lorem.&lt;/p>
-&lt;p>Occaecat nulla excepteur dolore excepteur duis eiusmod ullamco officia anim in voluptate ea occaecat officia. Cillum sint esse velit ea officia minim fugiat. Elit ea esse id aliquip pariatur cupidatat id duis minim incididunt ea ea. Anim ut duis sunt nisi. Culpa cillum sit voluptate voluptate eiusmod dolor. Enim nisi Lorem ipsum irure est excepteur voluptate eu in enim nisi. Nostrud ipsum Lorem anim sint labore consequat do.&lt;/p></description></item></channel></rss>
+&lt;/pre&gt;</description></item><item><title>Post 1</title><link>https://hugo-classless.netlify.app/posts/post-1/</link><pubDate>Sun, 15 Jan 2023 09:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/post-1/</guid><description>&lt;p&gt;Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat incididunt do nisi Lorem. Tempor do laborum elit laboris excepteur eiusmod do. Eiusmod nisi excepteur ut amet pariatur adipisicing Lorem.&lt;/p&gt;
+&lt;p&gt;Occaecat nulla excepteur dolore excepteur duis eiusmod ullamco officia anim in voluptate ea occaecat officia. Cillum sint esse velit ea officia minim fugiat. Elit ea esse id aliquip pariatur cupidatat id duis minim incididunt ea ea. Anim ut duis sunt nisi. Culpa cillum sit voluptate voluptate eiusmod dolor. Enim nisi Lorem ipsum irure est excepteur voluptate eu in enim nisi. Nostrud ipsum Lorem anim sint labore consequat do.&lt;/p&gt;</description></item></channel></rss>
