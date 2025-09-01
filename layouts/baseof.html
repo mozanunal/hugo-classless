@@ -35,27 +35,23 @@
 
 <body>
   <header>
+
     {{- if .Site.Params.themes -}}
     {{ partial "theme-selector.html" . }}
     {{- end -}}
-    <div>
-      <h1>
-        {{ .Site.Title }}
-      </h1>
-
+    <nav>
+      <ul>
+        <li><strong>{{ .Site.Title }}</strong></li>
+      </ul>
       {{- if .Site.Menus.main -}}
-      <nav>
-        <h4>
-          {{ $links := slice }}
-          {{- range .Site.Menus.main -}}
-          {{ $link := printf `<a href="%s">%s</a>` (.URL | relURL) .Name }}
-          {{ $links = $links | append $link }}
-          {{- end -}}
-          {{- delimit $links " | " | safeHTML -}}
-        </h4>
-      </nav>
+      <ul>
+        {{- range .Site.Menus.main -}}
+        <li><a href="{{.URL | relURL}}">{{.Name}}</a></li>
+        {{- end -}}
+      </ul>
       {{- end -}}
-    </div>
+    </nav>
+
   </header>
 
   <main>
