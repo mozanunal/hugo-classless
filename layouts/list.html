@@ -3,6 +3,7 @@
 
 {{/* Render _index.md content if it exists */}}
 {{ if .Content }}
+<h1>{{.Title}}</h1>
 <div>{{ .Content }}</div>
 <hr />
 {{ end }}
