@@ -1,17 +1,14 @@
-{{- /* layouts/_default/single.html */ -}}
 {{ define "main" }}
-  <article>
-    <header>
-      {{/* The post's title is the most important heading on its own page */}}
-      <h1>{{ .Title }}</h1>
-      <p>
-        <em><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time></em>
-      </p>
-    </header>
 
-    {{/* The main content of your post */}}
-    <div>
-      {{ .Content }}
-    </div>
-  </article>
+
+<h1>{{ .Title }}</h1>
+{{- if not .Date.IsZero -}}
+<p><em>{{ .Date.Format "January 2, 2006" }}</em></p>
+{{- end -}}
+
+{{/* The main content of your post */}}
+<div>
+  {{ .Content }}
+</div>
+
 {{ end }}

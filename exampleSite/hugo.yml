@@ -6,7 +6,7 @@
 baseURL: "https://hugo-classless.netlify.app/"
 languageCode: "en-US"
 # The main title for your site. Appears in the header and browser tabs.
-title: "Hugo Classless Theme"
+title: "Hugo Classless"
 # This tells Hugo to use the theme.
 # In an example site, it often refers to the parent directory.
 theme: "hugo-classless"
