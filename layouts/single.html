@@ -1,14 +1,16 @@
 {{ define "main" }}
 
+<article>
 
-<h1>{{ .Title }}</h1>
-{{- if not .Date.IsZero -}}
-<p><em>{{ .Date.Format "January 2, 2006" }}</em></p>
-{{- end -}}
+  <h1>{{ .Title }}</h1>
+  {{- if not .Date.IsZero -}}
+  <p><em>{{ .Date.Format "January 2, 2006" }}</em></p>
+  {{- end -}}
 
-{{/* The main content of your post */}}
-<div>
-  {{ .Content }}
-</div>
+  {{/* The main content of your post */}}
+  <div>
+    {{ .Content }}
+  </div>
 
+</article>
 {{ end }}

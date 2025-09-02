@@ -30,7 +30,6 @@
   <link rel="icon" href="{{ .Site.Params.faviconSVG | relURL }}" type="image/svg+xml">
   <link rel="shortcut icon" href="{{ .Site.Params.faviconICO | relURL }}">
   <link rel="apple-touch-icon" href="{{ .Site.Params.appleTouchIcon | relURL }}">
-
 </head>
 
 <body>
@@ -55,9 +54,7 @@
   </header>
 
   <main>
-    <article>
-      {{- block "main" . }}{{ end -}}
-    </article>
+    {{- block "main" . }}{{ end -}}
   </main>
 
   <footer>

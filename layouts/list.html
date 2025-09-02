@@ -1,30 +1,29 @@
 {{- /* layouts/_default/list.html */ -}}
 {{ define "main" }}
-
-{{/* Render _index.md content if it exists */}}
-{{ if .Content }}
-<h1>{{.Title}}</h1>
-<div>{{ .Content }}</div>
-<hr />
-{{ end }}
-
-
-{{/* Loop through pages, newest first */}}
-{{ range .Pages.ByDate.Reverse }}
-{{/* Post titles in a list are secondary headings */}}
 <article>
-
-  <h4>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
-  </h4>
-  {{ if .Description }}
-  <p>{{ .Description }}</p>
+  {{/* Render _index.md content if it exists */}}
+  {{ if .Content }}
+  <h1>{{.Title}}</h1>
+  <div>{{ .Content }}</div>
   {{ end }}
-  {{/* Use the correct <time> element for dates */}}
-    <p><em><small><time datetime="{{ .Date.Format " 2006-01-02" }}">{{ .Date.Format "January 2, 2006"
-            }}</time></small></em></p>
+
+  {{/* Loop through pages, newest first */}}
+  {{ range .Pages.ByDate.Reverse }}
+  {{/* Post titles in a list are secondary headings */}}
+  <article>
+
+    <h4>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h4>
+    {{ if .Description }}
+    <p>{{ .Description }}</p>
+    {{ end }}
+    {{/* Use the correct <time> element for dates */}}
+      <p><em><small><time datetime="{{ .Date.Format " 2006-01-02" }}">{{ .Date.Format "January 2, 2006"
+              }}</time></small></em></p>
+  </article>
+
+  {{ end }}
+
 </article>
-
-{{ end }}
-
 {{ end }}
