@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on Hugo Classless</title><link>https://hugo-classless.netlify.app/tags/hugo/</link><description>Recent content in Hugo on Hugo Classless</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Fri, 27 Oct 2023 10:00:00 -0500</lastBuildDate><atom:link href="https://hugo-classless.netlify.app/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>A Challenging Markdown Test Page</title><link>https://hugo-classless.netlify.app/posts/markdown-challenge/</link><pubDate>Fri, 27 Oct 2023 10:00:00 -0500</pubDate><guid>https://hugo-classless.netlify.app/posts/markdown-challenge/</guid><description>&lt;p&gt;Welcome to the Omni-Syntax Specimen file. This document is designed to test the
 capabilities of a Markdown parser and a static site generator like Hugo. It
 contains a mix of standard and extended syntax, often in tricky combinations.&lt;/p&gt;
-&lt;p&gt;The summary of this page ends here.&lt;/p&gt;</description></item><item><title>Mathematical Typesetting Test</title><link>https://hugo-classless.netlify.app/posts/math-test/</link><pubDate>Wed, 15 Feb 2023 10:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/math-test/</guid><description>&lt;p&gt;This page tests the mathematical typesetting capabilities of the site, which are powered by KaTeX.&lt;/p&gt;
+&lt;p&gt;The summary of this page ends here.&lt;/p&gt;</description></item><item><title>Markdown Showcase</title><link>https://hugo-classless.netlify.app/posts/markdown-showcase/</link><pubDate>Wed, 01 Mar 2023 10:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/markdown-showcase/</guid><description>&lt;p&gt;This post demonstrates common Markdown elements and theme features including the Table of Contents, tables, images, blockquotes, and more.&lt;/p&gt;
+&lt;h2 id="text-formatting"&gt;Text Formatting&lt;/h2&gt;
+&lt;p&gt;You can write &lt;strong&gt;bold text&lt;/strong&gt;, &lt;em&gt;italic text&lt;/em&gt;, and &lt;em&gt;&lt;strong&gt;bold italic&lt;/strong&gt;&lt;/em&gt; text. You can also use &lt;del&gt;strikethrough&lt;/del&gt; and &lt;code&gt;inline code&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Here is a paragraph with a &lt;a href="https://gohugo.io/"&gt;link to Hugo&lt;/a&gt; and a footnote reference&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;h2 id="blockquotes"&gt;Blockquotes&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;The best way to predict the future is to invent it.&amp;rdquo;
+— Alan Kay&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Nested blockquotes also work:&lt;/p&gt;</description></item><item><title>Mathematical Typesetting Test</title><link>https://hugo-classless.netlify.app/posts/math-test/</link><pubDate>Wed, 15 Feb 2023 10:00:00 -0700</pubDate><guid>https://hugo-classless.netlify.app/posts/math-test/</guid><description>&lt;p&gt;This page tests the mathematical typesetting capabilities of the site, which are powered by KaTeX.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; For this to render correctly, KaTeX support must be enabled in your site&amp;rsquo;s configuration. See the Hugo documentation for details.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id="inline-formulas"&gt;Inline Formulas&lt;/h3&gt;
