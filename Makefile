@@ -7,16 +7,19 @@ MERMAID_DIST := https://cdn.jsdelivr.net/npm/mermaid@$(MERMAID_VERSION)/dist
 KATEX_DIR := static/libs/katex
 MERMAID_DIR := static/libs/mermaid
 
-all: serve
+.PHONY: help
+help: ## Show available make targets
+	@echo "Available targets:"
+	@awk 'BEGIN {FS = ":.*## "}; /^[a-zA-Z0-9_.-]+:.*##/ {printf "  %-24s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-serve:
+serve: ## Start Hugo dev server for exampleSite
 	hugo server --source exampleSite --themesDir=../.. \
 		--openBrowser --enableGitInfo --navigateToChanged --disableFastRender
 
-build:
+build: ## Build exampleSite with minification
 	hugo --gc --minify --source exampleSite --themesDir=../..
 
-katex:
+katex: ## Download KaTeX assets to static/libs/katex
 	@echo "⬇️ Downloading KaTeX $(KATEX_VERSION)..."
 	mkdir -p $(KATEX_DIR)/fonts
 	curl -sSL $(KATEX_DIST)/katex.min.js -o $(KATEX_DIR)/katex.min.v$(KATEX_VERSION).js
@@ -32,12 +35,12 @@ katex:
 	done
 	@echo "✅ KaTeX downloaded."
 
-mermaid:
+mermaid: ## Download Mermaid assets to static/libs/mermaid
 	@echo "⬇️ Downloading Mermaid $(MERMAID_VERSION)..."
 	mkdir -p $(MERMAID_DIR)
 	curl -sSL $(MERMAID_DIST)/mermaid.min.js -o $(MERMAID_DIR)/mermaid.min.v$(MERMAID_VERSION).js
 	@echo "✅ Mermaid downloaded."
 
-clean:
+clean: ## Remove downloaded assets
 	rm -rf $(KATEX_DIR) $(MERMAID_DIR)
 	@echo "🧼 Cleaned."
