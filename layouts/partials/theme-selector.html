@@ -1,7 +1,9 @@
 <div class="theme-selector">
   <select id="theme-selector-input">
     {{- range .Site.Params.themes -}}
-    <option value="{{ .url }}">{{ .name }}</option>
+    {{- $url := partial "resolve-css-url.html" .url -}}
+    {{- $darkUrl := partial "resolve-css-url.html" (.dark | default "") -}}
+    <option value="{{ $url }}" data-dark="{{ $darkUrl }}">{{ .name }}</option>
     {{- end -}}
   </select>
 </div>
@@ -11,6 +13,7 @@
   (function () {
     'use strict';
     const styleLink = document.getElementById('theme-style');
+    const darkLink = document.getElementById('theme-style-dark');
     const themeSelector = document.getElementById('theme-selector-input');
     const storageKey = 'hugo-classless-theme';
 
@@ -18,6 +21,18 @@
       styleLink.href = themeUrl;
       if (themeSelector) {
         themeSelector.value = themeUrl;
+        // Update the dark stylesheet for the selected theme
+        var selected = themeSelector.options[themeSelector.selectedIndex];
+        var darkUrl = selected ? selected.getAttribute('data-dark') : '';
+        if (darkLink) {
+          if (darkUrl) {
+            darkLink.href = darkUrl;
+            darkLink.disabled = false;
+          } else {
+            darkLink.href = '';
+            darkLink.disabled = true;
+          }
+        }
       }
     }
 

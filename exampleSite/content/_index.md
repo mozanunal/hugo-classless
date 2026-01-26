@@ -28,8 +28,9 @@ adopt its appearance.
 
 The best way to understand the concept is to try it yourself. **Use the theme
 switcher in the header** to dynamically change the look and feel of this entire
-site. Watch how every element adapts instantly. This is the power of classless
-CSS!
+site. You can also **toggle between light, dark, and system mode** using the
+icon button in the navbar. Watch how every element adapts instantly. This is the
+power of classless CSS!
 
 ---
 
@@ -65,11 +66,9 @@ git submodule add \
 theme: "hugo-classless"
 
 params:
-  themes:
-    - name: "Pico"
-      url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-    - name: "Water.css"
-      url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+  # Single theme with dark mode support:
+  theme: "css/classless.css"
+  themeDark: "css/classless-dark.css"
 ```
 
 For full documentation and more configuration options, check out the project on

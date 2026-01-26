@@ -1,13 +1,11 @@
 {{- if not .IsHome -}}
-<p>
-  <small>
-    <a href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
-    {{- range .Ancestors.Reverse -}}
-    {{- if not .IsHome -}}
-    &nbsp;/&nbsp;<a href="{{ .Permalink }}">{{ .Title }}</a>
-    {{- end -}}
-    {{- end -}}
-    &nbsp;/&nbsp;{{ .Title }}
-  </small>
+<p style="margin-bottom: 0;">
+  <a href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+  {{- range .Ancestors.Reverse -}}
+  {{- if not .IsHome -}}
+  &nbsp;/&nbsp;<a href="{{ .Permalink }}">{{ .Title }}</a>
+  {{- end -}}
+  {{- end -}}
+  &nbsp;/&nbsp;{{ .Title }}
 </p>
 {{- end -}}

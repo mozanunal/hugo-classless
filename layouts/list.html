@@ -1,6 +1,7 @@
 {{- /* layouts/_default/list.html */ -}}
 {{ define "main" }}
 <section>
+  {{- partial "breadcrumb.html" . -}}
   {{/* Render _index.md content if it exists */}}
   {{ if .Content }}
   <h1>{{.Title}}</h1>
@@ -14,11 +15,6 @@
     <h4>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
     </h4>
-    {{ if .Description }}
-    <p>{{ .Description }}</p>
-    {{ else }}
-    <p>{{ .Summary }}</p>
-    {{ end }}
     <p><em><small><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time></small></em></p>
   </article>
   {{ end }}

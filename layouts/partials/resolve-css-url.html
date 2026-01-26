@@ -1,0 +1,8 @@
+{{- $url := . -}}
+{{- if and $url (not (hasPrefix $url "http")) -}}
+  {{- with resources.Get $url -}}
+    {{- $res := . | minify | fingerprint -}}
+    {{- $url = $res.RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

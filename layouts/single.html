@@ -1,6 +1,7 @@
 {{ define "main" }}
 
 <article>
+  {{- partial "breadcrumb.html" . -}}
 
   <h1>{{ .Title }}</h1>
 
@@ -17,10 +18,10 @@
   <p><em><small>{{ i18n "lastModified" | default "Last modified" }}: <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "January 2, 2006" }}</time></small></em></p>
   {{- end -}}
 
-  {{- if .Params.toc -}}
+  {{- if (.Param "toc" | default true) -}}
   {{- $toc := .TableOfContents -}}
   {{- if findRE "<li>" $toc -}}
-  <details open>
+  <details>
     <summary>{{ i18n "tableOfContents" | default "Table of Contents" }}</summary>
     {{ $toc }}
   </details>
@@ -32,28 +33,18 @@
     {{ .Content }}
   </div>
 
-  {{/* Tags and Categories (disable with showTaxonomy: false in front matter or site params) */}}
+  {{/* Tags (disable with showTaxonomy: false in front matter or site params) */}}
   {{- $showTaxonomy := .Param "showTaxonomy" | default true -}}
   {{- $tags := .GetTerms "tags" -}}
-  {{- $categories := .GetTerms "categories" -}}
-  {{- if and $showTaxonomy (or $tags $categories) -}}
+  {{- if and $showTaxonomy $tags -}}
   <hr>
   {{- with $tags -}}
   <p>
     <strong>{{ i18n "tags" | default "Tags" }}:</strong>
     {{- range $i, $t := . -}}
-    {{- if $i }}, {{ end -}}
-    <a href="{{ $t.Permalink }}">{{ $t.LinkTitle }}</a>
-    {{- end -}}
-  </p>
-  {{- end -}}
-  {{- with $categories -}}
-  <p>
-    <strong>{{ i18n "categories" | default "Categories" }}:</strong>
-    {{- range $i, $c := . -}}
-    {{- if $i }}, {{ end -}}
-    <a href="{{ $c.Permalink }}">{{ $c.LinkTitle }}</a>
-    {{- end -}}
+      {{- if $i }}, {{ end -}}
+      <a href="{{ $t.Permalink }}">{{ $t.LinkTitle }}</a>
+      {{- end -}}
   </p>
   {{- end -}}
   {{- end -}}

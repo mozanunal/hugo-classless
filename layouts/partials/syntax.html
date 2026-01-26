@@ -1,11 +1,11 @@
 {{ $light := resources.Get "css/syntax-light.css" | minify | fingerprint }}
 {{ $dark  := resources.Get "css/syntax-dark.css"  | minify | fingerprint }}
 
-<link rel="stylesheet"
+<link id="syntax-light" rel="stylesheet"
       href="{{ $light.RelPermalink }}"
       media="(prefers-color-scheme: light)"
 />
-<link rel="stylesheet"
+<link id="syntax-dark" rel="stylesheet"
       href="{{ $dark.RelPermalink }}"
       media="(prefers-color-scheme: dark)"
 />
