@@ -1,0 +1,38 @@
+skipToContent:
+  other: "Skip to content"
+mainNavigation:
+  other: "Main navigation"
+breadcrumb:
+  other: "Breadcrumb"
+notFoundTitle:
+  other: "404: Page Not Found"
+notFoundMessage:
+  other: "Sorry, the page you were looking for doesn't exist."
+notFoundBack:
+  other: "Go back to the homepage"
+minRead:
+  other: "min read"
+tableOfContents:
+  other: "Table of Contents"
+relatedPosts:
+  other: "Related Posts"
+previous:
+  other: "Previous"
+next:
+  other: "Next"
+lastModified:
+  other: "Last modified"
+tags:
+  other: "Tags"
+categories:
+  other: "Categories"
+details:
+  other: "Details"
+info:
+  other: "Info"
+warning:
+  other: "Warning"
+tip:
+  other: "Tip"
+note:
+  other: "Note"

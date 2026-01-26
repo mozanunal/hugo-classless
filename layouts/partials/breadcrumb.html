@@ -1,0 +1,13 @@
+{{- if not .IsHome -}}
+<p>
+  <small>
+    <a href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+    {{- range .Ancestors.Reverse -}}
+    {{- if not .IsHome -}}
+    &nbsp;/&nbsp;<a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{- end -}}
+    {{- end -}}
+    &nbsp;/&nbsp;{{ .Title }}
+  </small>
+</p>
+{{- end -}}

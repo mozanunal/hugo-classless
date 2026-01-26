@@ -1,4 +1,22 @@
 <style>
+  /* Skip link: hidden until focused */
+  #skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  #skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    padding: 0.5rem;
+  }
+
   pre code,
   code {
     -webkit-text-size-adjust: 100%;
@@ -19,8 +37,8 @@
   }
 
 
-  /* super basic navbar */
-  nav {
+  /* super basic navbar (scoped to header to avoid affecting ToC nav) */
+  header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +48,7 @@
     font-size: 1.40rem;
   }
 
-  nav ul {
+  header nav ul {
     display: flex;
     list-style: none;
     padding: 0;

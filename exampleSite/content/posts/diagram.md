@@ -2,6 +2,9 @@
 title = 'Diagram Testing'
 date = 2023-02-15T09:00:00-07:00
 draft = false
+description = 'A test page demonstrating Goat ASCII art and Mermaid diagram support.'
+tags = ['diagrams', 'mermaid', 'test']
+categories = ['Features']
 +++
 
 

@@ -1,13 +1,7 @@
-{{- /* layouts/_default/list.html */ -}}
 {{ define "main" }}
 <section>
-  {{/* Render _index.md content if it exists */}}
-  {{ if .Content }}
-  <h1>{{.Title}}</h1>
-  <div>{{ .Content }}</div>
-  {{ end }}
+  <h1>{{ .Title }}</h1>
 
-  {{/* Loop through pages, newest first, with pagination */}}
   {{ $paginator := .Paginate (.Pages.ByDate.Reverse) }}
   {{ range $paginator.Pages }}
   <article>
@@ -23,7 +17,6 @@
   </article>
   {{ end }}
 
-  {{/* Pagination controls */}}
   {{ if gt $paginator.TotalPages 1 }}
   <p>
     {{ if $paginator.HasPrev }}
@@ -41,6 +34,5 @@
     {{ end }}
   </p>
   {{ end }}
-
 </section>
 {{ end }}

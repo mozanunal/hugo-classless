@@ -1,0 +1,5 @@
+{{ $type := .Get "type" | default "info" }}
+<aside>
+  <p><strong>{{ i18n $type | default ($type | title) }}</strong></p>
+  {{ .Inner }}
+</aside>

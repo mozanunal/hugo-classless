@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang | default " en" }}">
+<html lang="{{ .Site.Language.Lang | default "en" }}">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  {{- with .OutputFormats.Get "RSS" }}
   <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  {{- end }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{- if .Params.noindex }}
+  <meta name="robots" content="noindex">
+  {{- end }}
 
   {{- if .Site.Params.themes -}}
   {{/* Demo mode takes precedence: Use the first theme from the list by default. */}}
@@ -27,18 +33,29 @@
   </title>
 
   {{- /* Favicons */ -}}
-  <link rel="icon" href="{{ .Site.Params.faviconSVG | relURL }}" type="image/svg+xml">
-  <link rel="shortcut icon" href="{{ .Site.Params.faviconICO | relURL }}">
-  <link rel="apple-touch-icon" href="{{ .Site.Params.appleTouchIcon | relURL }}">
+  {{- with .Site.Params.faviconSVG }}
+  <link rel="icon" href="{{ . | relURL }}" type="image/svg+xml">
+  {{- end }}
+  {{- with .Site.Params.faviconICO }}
+  <link rel="shortcut icon" href="{{ . | relURL }}">
+  {{- end }}
+  {{- with .Site.Params.appleTouchIcon }}
+  <link rel="apple-touch-icon" href="{{ . | relURL }}">
+  {{- end }}
+
+  {{- partial "head-meta.html" . -}}
+  {{- partial "structured-data.html" . -}}
 </head>
 
 <body>
+  <a id="skip-link" href="#main-content">{{ i18n "skipToContent" | default "Skip to content" }}</a>
+
   <header>
 
     {{- if .Site.Params.themes -}}
     {{ partial "theme-selector.html" . }}
     {{- end -}}
-    <nav>
+    <nav aria-label="{{ i18n "mainNavigation" | default "Main navigation" }}">
       <ul>
         <li><strong>{{ .Site.Title }}</strong></li>
       </ul>
@@ -53,7 +70,8 @@
 
   </header>
 
-  <main>
+  <main id="main-content">
+    {{- partial "breadcrumb.html" . -}}
     {{- block "main" . }}{{ end -}}
   </main>
 

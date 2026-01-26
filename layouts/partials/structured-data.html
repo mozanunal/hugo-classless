@@ -1,0 +1,13 @@
+{{- if .IsPage -}}
+{{- $author := dict "@type" "Person" "name" (.Site.Params.author | default "") -}}
+{{- $desc := .Description | default (.Summary | plainify | truncate 160) -}}
+{{- $data := dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00") "author" $author "description" $desc -}}
+{{- with .Lastmod -}}
+{{- $data = merge $data (dict "dateModified" (.Format "2006-01-02T15:04:05Z07:00")) -}}
+{{- end -}}
+{{- $json := $data | jsonify (dict "indent" "  ") -}}
+{{ printf "<script type=\"application/ld+json\">\n%s\n</script>" $json | safeHTML }}
+{{- else -}}
+{{- $json := dict "@context" "https://schema.org" "@type" "WebSite" "name" .Site.Title "url" .Site.BaseURL | jsonify (dict "indent" "  ") -}}
+{{ printf "<script type=\"application/ld+json\">\n%s\n</script>" $json | safeHTML }}
+{{- end -}}

@@ -3,14 +3,88 @@
 <article>
 
   <h1>{{ .Title }}</h1>
+
   {{- if not .Date.IsZero -}}
-  <p><em>{{ .Date.Format "January 2, 2006" }}</em></p>
+  <p>
+    <em>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      &middot; {{ .ReadingTime }} {{ i18n "minRead" | default "min read" }}
+    </em>
+  </p>
+  {{- end -}}
+
+  {{- if and .Lastmod (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) -}}
+  <p><em><small>{{ i18n "lastModified" | default "Last modified" }}: <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "January 2, 2006" }}</time></small></em></p>
+  {{- end -}}
+
+  {{- if .Params.toc -}}
+  {{- $toc := .TableOfContents -}}
+  {{- if findRE "<li>" $toc -}}
+  <details open>
+    <summary>{{ i18n "tableOfContents" | default "Table of Contents" }}</summary>
+    {{ $toc }}
+  </details>
+  {{- end -}}
   {{- end -}}
 
   {{/* The main content of your post */}}
   <div>
     {{ .Content }}
   </div>
+
+  {{/* Tags and Categories (disable with showTaxonomy: false in front matter or site params) */}}
+  {{- $showTaxonomy := .Param "showTaxonomy" | default true -}}
+  {{- $tags := .GetTerms "tags" -}}
+  {{- $categories := .GetTerms "categories" -}}
+  {{- if and $showTaxonomy (or $tags $categories) -}}
+  <hr>
+  {{- with $tags -}}
+  <p>
+    <strong>{{ i18n "tags" | default "Tags" }}:</strong>
+    {{- range $i, $t := . -}}
+    {{- if $i }}, {{ end -}}
+    <a href="{{ $t.Permalink }}">{{ $t.LinkTitle }}</a>
+    {{- end -}}
+  </p>
+  {{- end -}}
+  {{- with $categories -}}
+  <p>
+    <strong>{{ i18n "categories" | default "Categories" }}:</strong>
+    {{- range $i, $c := . -}}
+    {{- if $i }}, {{ end -}}
+    <a href="{{ $c.Permalink }}">{{ $c.LinkTitle }}</a>
+    {{- end -}}
+  </p>
+  {{- end -}}
+  {{- end -}}
+
+  {{/* Related Posts */}}
+  {{- $related := .Site.RegularPages.Related . | first 5 -}}
+  {{- with $related -}}
+  <hr>
+  <h3>{{ i18n "relatedPosts" | default "Related Posts" }}</h3>
+  <ul>
+    {{- range . -}}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{- end -}}
+  </ul>
+  {{- end -}}
+
+  {{/* Previous/Next Navigation */}}
+  {{- $prev := .PrevInSection -}}
+  {{- $next := .NextInSection -}}
+  {{- if or $prev $next -}}
+  <hr>
+  <p>
+    {{- with $prev -}}
+    <a href="{{ .Permalink }}">&larr; {{ .Title }}</a>
+    {{- end -}}
+    {{- if and $prev $next }} | {{ end -}}
+    {{- with $next -}}
+    <a href="{{ .Permalink }}">{{ .Title }} &rarr;</a>
+    {{- end -}}
+  </p>
+  {{- end -}}
 
 </article>
 {{ end }}

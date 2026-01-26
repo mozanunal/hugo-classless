@@ -1,0 +1,4 @@
+<details{{ if .Get "open" }} open{{ end }}>
+  <summary>{{ .Get "summary" | default (i18n "details" | default "Details") }}</summary>
+  {{ .Inner }}
+</details>
