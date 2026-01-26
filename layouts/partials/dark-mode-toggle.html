@@ -1,0 +1,90 @@
+<li>
+  <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle color scheme" title="Toggle color scheme">
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+    </svg>
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+    </svg>
+    <svg class="icon-system" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path fill-rule="evenodd" d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.75A.75.75 0 0115 19.5H9a.75.75 0 01-.75-.75V18h-3a3 3 0 01-3-3V5.25zm1.5 0A1.5 1.5 0 015.25 3.75h13.5a1.5 1.5 0 011.5 1.5V15a1.5 1.5 0 01-1.5 1.5H5.25A1.5 1.5 0 013.75 15V5.25z" clip-rule="evenodd" />
+    </svg>
+  </button>
+</li>
+
+<script>
+(function() {
+  var STORAGE_KEY = 'hugo-classless-color-scheme';
+
+  function setMediaForMode(el, mode, lightMedia, darkMedia) {
+    if (!el) return;
+    if (mode === 'dark') el.media = darkMedia;
+    else if (mode === 'light') el.media = lightMedia;
+    else el.media = el.getAttribute('data-default-media') || '';
+  }
+
+  function applyTheme(mode) {
+    document.documentElement.setAttribute('data-theme', mode);
+
+    // Toggle syntax highlight stylesheets
+    var syntaxLight = document.getElementById('syntax-light');
+    var syntaxDark = document.getElementById('syntax-dark');
+    setMediaForMode(syntaxLight, mode, 'all', 'not all');
+    setMediaForMode(syntaxDark, mode, 'not all', 'all');
+
+    // Toggle theme dark stylesheet
+    var themeDark = document.getElementById('theme-style-dark');
+    setMediaForMode(themeDark, mode, 'not all', 'all');
+  }
+
+  // Store default media values once DOM is ready so system mode can restore them
+  function storeDefaults() {
+    ['syntax-light', 'syntax-dark', 'theme-style-dark'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && !el.getAttribute('data-default-media')) {
+        el.setAttribute('data-default-media', el.media || '');
+      }
+    });
+  }
+
+  // Apply saved preference early to avoid flash
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+  var mode = (saved === 'light' || saved === 'dark') ? saved : 'system';
+  // For early apply before DOM is ready, set data-theme and handle stylesheet media directly
+  document.documentElement.setAttribute('data-theme', mode);
+
+  // Set up toggle and full theme application after DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    storeDefaults();
+    applyTheme(mode);
+
+    var btn = document.getElementById('dark-mode-toggle');
+    if (!btn) return;
+
+    btn.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next;
+      if (current === 'light') next = 'dark';
+      else if (current === 'dark') next = 'system';
+      else next = 'light';
+
+      applyTheme(next);
+      try {
+        if (next === 'system') {
+          localStorage.removeItem(STORAGE_KEY);
+        } else {
+          localStorage.setItem(STORAGE_KEY, next);
+        }
+      } catch(e) {}
+    });
+  });
+
+  // Listen for system preference changes (re-apply in system mode)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+    if (document.documentElement.getAttribute('data-theme') === 'system') {
+      applyTheme('system');
+    }
+  });
+})();
+</script>

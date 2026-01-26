@@ -1,6 +1,7 @@
 {{ define "main" }}
 
 <article>
+  {{- partial "breadcrumb.html" . -}}
 
   <h1>{{ .Title }}</h1>
 
@@ -20,7 +21,7 @@
   {{- if .Params.toc -}}
   {{- $toc := .TableOfContents -}}
   {{- if findRE "<li>" $toc -}}
-  <details open>
+  <details>
     <summary>{{ i18n "tableOfContents" | default "Table of Contents" }}</summary>
     {{ $toc }}
   </details>

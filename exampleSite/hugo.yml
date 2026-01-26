@@ -22,13 +22,16 @@ params:
   # --- Stylesheet Configuration ---
   # Production mode
   theme: "css/classless.css"
+  themeDark: "css/classless-dark.css"
   # theme: https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css
 
   # To enable the live theme-switcher, define a list of two or more themes.
   # The first theme in the list will be the default.
+  # Add an optional "dark" URL to enable the dark/light mode toggle for that theme.
   themes:
     - name: "Classless.css"
-      url: "/css/local_classless.css"
+      url: "css/classless.css"
+      dark: "css/classless-dark.css"
     - name: "Cosmo.css"
       url: "https://cdn.jsdelivr.net/gh/cspablocortez/cosmocss@latest/cosmo.min.css"
     - name: "Pico"
@@ -36,7 +39,8 @@ params:
     - name: "Pico-Fluid"
       url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.fluid.classless.min.css"
     - name: "Water.css"
-      url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+      url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
+      dark: "https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css"
     - name: "Simple.css"
       url: "https://cdn.simplecss.org/simple.min.css"
     - name: "New.css"

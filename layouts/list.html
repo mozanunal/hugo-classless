@@ -1,6 +1,7 @@
 {{- /* layouts/_default/list.html */ -}}
 {{ define "main" }}
 <section>
+  {{- partial "breadcrumb.html" . -}}
   {{/* Render _index.md content if it exists */}}
   {{ if .Content }}
   <h1>{{.Title}}</h1>

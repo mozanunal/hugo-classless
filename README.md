@@ -57,6 +57,9 @@ You can install the `hugo-classless` theme in two ways:
 
 - **Plug & Play Styling:** By using pure semantic HTML, the theme is compatible
   with any classless CSS framework out of the box.
+- **Dark / Light / System Toggle:** A built-in navbar toggle lets users switch
+  between light mode, dark mode, and automatic (system preference). Each theme
+  can optionally provide a separate dark stylesheet via config.
 - **Live Theme-Switcher:** The perfect tool for demonstrating the power of
   classless CSS. Add a dropdown to your site to switch between your favorite
   frameworks on the fly.
@@ -86,15 +89,26 @@ params:
   author: "John Doe"
   description: "A personal website about cool things."
 
-  # Define your list of classless frameworks here.
-  # The first one is the default. Two or more enables the switcher.
-  themes:
-    - name: "Pico"
-      url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-    - name: "Water.css"
-      url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
-    - name: "HTML only"
-      url: ""
+  # --- Production mode (single theme) ---
+  # Point to a CSS file inside assets/.
+  # Optionally add a dark stylesheet for the dark/light toggle.
+  theme: "css/classless.css"
+  themeDark: "css/classless-dark.css"
+
+  # --- Demo mode (theme-switcher) ---
+  # Define two or more themes to enable the live switcher dropdown.
+  # The first one is the default. Each entry can have an optional
+  # "dark" URL to enable the dark/light mode toggle for that theme.
+  # Local paths (no "http" prefix) are resolved from assets/ and
+  # processed through Hugo's asset pipeline (minified + fingerprinted).
+  # themes:
+  #   - name: "Pico"
+  #     url: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+  #   - name: "Water.css"
+  #     url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
+  #     dark: "https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css"
+  #   - name: "HTML only"
+  #     url: ""
 
 menu:
   main:
@@ -102,6 +116,44 @@ menu:
       pageRef: "/"
       weight: 10
 ```
+
+### Dark Mode
+
+The theme includes a three-state toggle button in the navbar:
+
+- **Sun icon** — forced light mode
+- **Moon icon** — forced dark mode
+- **Monitor icon** — follows the operating system preference (default)
+
+The user's choice is persisted in `localStorage`. Without JavaScript the
+site falls back to the system preference via `prefers-color-scheme`.
+
+To enable the toggle for a theme, provide a separate dark stylesheet:
+
+**Production mode:**
+
+```yaml
+params:
+  theme: "css/classless.css"
+  themeDark: "css/classless-dark.css"
+```
+
+**Demo mode (theme-switcher):**
+
+```yaml
+params:
+  themes:
+    - name: "Classless.css"
+      url: "css/classless.css"
+      dark: "css/classless-dark.css"
+    - name: "Water.css"
+      url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
+      dark: "https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css"
+```
+
+Themes without a `dark` entry still work — the toggle will continue to
+control the syntax-highlight stylesheets and the `data-theme` attribute on
+`<html>`.
 
 ## Included Frameworks
 

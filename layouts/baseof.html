@@ -16,13 +16,23 @@
 
   {{- if .Site.Params.themes -}}
   {{/* Demo mode takes precedence: Use the first theme from the list by default. */}}
-  {{- $stylesheet_url := (index .Site.Params.themes 0).url -}}
-  <link id="theme-style" rel="stylesheet" href="{{ $stylesheet_url }}">
+  {{- $first := index .Site.Params.themes 0 -}}
+  {{- $firstUrl := partial "resolve-css-url.html" $first.url -}}
+  <link id="theme-style" rel="stylesheet" href="{{ $firstUrl }}">
+  {{- with $first.dark -}}
+  {{- $darkUrl := partial "resolve-css-url.html" . -}}
+  <link id="theme-style-dark" rel="stylesheet" href="{{ $darkUrl }}" media="(prefers-color-scheme: dark)">
+  {{- end -}}
   {{- else if .Site.Params.theme -}}
   {{/* Production mode: Use the single specified theme from local resources. */}}
-  {{- $stylesheet_res := resources.Get .Site.Params.theme | toCSS (dict "minify" true) | fingerprint -}}
+  {{- $stylesheet_res := resources.Get .Site.Params.theme | minify | fingerprint -}}
   <link id="theme-style" rel="stylesheet" href="{{ $stylesheet_res.RelPermalink }}"
     integrity="{{ $stylesheet_res.Data.Integrity }}">
+  {{- with .Site.Params.themeDark -}}
+  {{- $dark_res := resources.Get . | minify | fingerprint -}}
+  <link id="theme-style-dark" rel="stylesheet" href="{{ $dark_res.RelPermalink }}"
+    integrity="{{ $dark_res.Data.Integrity }}" media="(prefers-color-scheme: dark)">
+  {{- end -}}
   {{- end -}}
 
   {{- partial "css-overwrite.html" . -}}
@@ -59,19 +69,19 @@
       <ul>
         <li><strong>{{ .Site.Title }}</strong></li>
       </ul>
-      {{- if .Site.Menus.main -}}
       <ul>
+        {{- if .Site.Menus.main -}}
         {{- range .Site.Menus.main -}}
         <li><a href="{{.URL | relURL}}">{{.Name}}</a></li>
         {{- end -}}
+        {{- end -}}
+        {{- partial "dark-mode-toggle.html" . -}}
       </ul>
-      {{- end -}}
     </nav>
 
   </header>
 
   <main id="main-content">
-    {{- partial "breadcrumb.html" . -}}
     {{- block "main" . }}{{ end -}}
   </main>
 
