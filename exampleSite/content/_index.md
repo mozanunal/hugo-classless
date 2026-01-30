@@ -67,8 +67,9 @@ theme: "hugo-classless"
 
 params:
   # Single theme with dark mode support:
-  theme: "css/classless.css"
-  themeDark: "css/classless-dark.css"
+  themeBase: "css/base.css"
+  themeLight: "css/light.css"
+  themeDark: "css/dark.css"
 ```
 
 For full documentation and more configuration options, check out the project on

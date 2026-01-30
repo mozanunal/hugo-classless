@@ -21,8 +21,9 @@ params:
 
   # --- Stylesheet Configuration ---
   # Production mode
-  theme: "css/classless.css"
-  themeDark: "css/classless-dark.css"
+  themeBase: "css/base.css"
+  themeLight: "css/light.css"
+  themeDark: "css/dark.css"
   # theme: https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css
 
   # To enable the live theme-switcher, define a list of two or more themes.
@@ -30,8 +31,8 @@ params:
   # Add an optional "dark" URL to enable the dark/light mode toggle for that theme.
   themes:
     - name: "Classless.css"
-      url: "css/classless.css"
-      dark: "css/classless-dark.css"
+      url: "css/light.css"
+      dark: "css/dark.css"
     - name: "Cosmo.css"
       url: "https://cdn.jsdelivr.net/gh/cspablocortez/cosmocss@latest/cosmo.min.css"
     - name: "Pico"

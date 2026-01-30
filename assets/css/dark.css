@@ -1,18 +1,29 @@
-/* Dark mode overrides for Classless CSS.
-   This file is loaded as a separate stylesheet with
-   media="(prefers-color-scheme: dark)" and toggled by JS. */
+/* Dark theme variables and overrides for Classless CSS. */
 
 :root {
     --primary: #13181f;
     --primary-contrast: #13181f;
     --primary-invert: #cbe0ff;
+    --secondary: #64748b;
+    --secondary-light: #94a3b8;
+    --success: #10b981;
+    --success-light: #34d399;
+    --danger: #ef4444;
+    --danger-light: #f87171;
+    --warning: #f59e0b;
+    --warning-light: #fbbf24;
+    --info: #0ea5e9;
+    --info-light: #38bdf8;
+    --light: #f8fafc;
+    --dark: #1e293b;
     --body-bg: #0f172a;
     --body-color: #e2e8f0;
     --heading-color: #f8fafc;
+    --link-color: #61aeff;
+    --link-hover-color: #0b65ff;
     --border-color: #334155;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --card-bg: #1e293b;
-    --link-color: #61aeff;
     --progress-color: #2f9e45;
     --input-icon-color: #e2e8f0;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);

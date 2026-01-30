@@ -92,8 +92,9 @@ params:
   # --- Production mode (single theme) ---
   # Point to a CSS file inside assets/.
   # Optionally add a dark stylesheet for the dark/light toggle.
-  theme: "css/classless.css"
-  themeDark: "css/classless-dark.css"
+  themeBase: "css/base.css"
+  themeLight: "css/light.css"
+  themeDark: "css/dark.css"
 
   # --- Demo mode (theme-switcher) ---
   # Define two or more themes to enable the live switcher dropdown.
@@ -134,8 +135,9 @@ To enable the toggle for a theme, provide a separate dark stylesheet:
 
 ```yaml
 params:
-  theme: "css/classless.css"
-  themeDark: "css/classless-dark.css"
+  themeBase: "css/base.css"
+  themeLight: "css/light.css"
+  themeDark: "css/dark.css"
 ```
 
 **Demo mode (theme-switcher):**
@@ -144,8 +146,8 @@ params:
 params:
   themes:
     - name: "Classless.css"
-      url: "css/classless.css"
-      dark: "css/classless-dark.css"
+      url: "css/light.css"
+      dark: "css/dark.css"
     - name: "Water.css"
       url: "https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
       dark: "https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css"

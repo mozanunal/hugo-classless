@@ -14,6 +14,12 @@
   <meta name="robots" content="noindex">
   {{- end }}
 
+  {{- with .Site.Params.themeBase -}}
+  {{- $base_res := resources.Get . | minify | fingerprint -}}
+  <link id="theme-style-base" rel="stylesheet" href="{{ $base_res.RelPermalink }}"
+    integrity="{{ $base_res.Data.Integrity }}">
+  {{- end -}}
+
   {{- if .Site.Params.themes -}}
   {{/* Demo mode takes precedence: Use the first theme from the list by default. */}}
   {{- $first := index .Site.Params.themes 0 -}}
@@ -23,9 +29,9 @@
   {{- $darkUrl := partial "resolve-css-url.html" . -}}
   <link id="theme-style-dark" rel="stylesheet" href="{{ $darkUrl }}" media="(prefers-color-scheme: dark)">
   {{- end -}}
-  {{- else if .Site.Params.theme -}}
+  {{- else if .Site.Params.themeLight -}}
   {{/* Production mode: Use the single specified theme from local resources. */}}
-  {{- $stylesheet_res := resources.Get .Site.Params.theme | minify | fingerprint -}}
+  {{- $stylesheet_res := resources.Get .Site.Params.themeLight | minify | fingerprint -}}
   <link id="theme-style" rel="stylesheet" href="{{ $stylesheet_res.RelPermalink }}"
     integrity="{{ $stylesheet_res.Data.Integrity }}">
   {{- with .Site.Params.themeDark -}}

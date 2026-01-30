@@ -123,12 +123,16 @@
   .dark-mode-toggle .icon-moon { display: none; }
   .dark-mode-toggle .icon-system { display: block; }
 
-  html[data-theme="light"] .dark-mode-toggle .icon-sun { display: block; }
-  html[data-theme="light"] .dark-mode-toggle .icon-moon { display: none; }
-  html[data-theme="light"] .dark-mode-toggle .icon-system { display: none; }
+  html[data-theme-pref="light"] .dark-mode-toggle .icon-sun { display: block; }
+  html[data-theme-pref="light"] .dark-mode-toggle .icon-moon { display: none; }
+  html[data-theme-pref="light"] .dark-mode-toggle .icon-system { display: none; }
 
-  html[data-theme="dark"] .dark-mode-toggle .icon-sun { display: none; }
-  html[data-theme="dark"] .dark-mode-toggle .icon-moon { display: block; }
-  html[data-theme="dark"] .dark-mode-toggle .icon-system { display: none; }
+  html[data-theme-pref="dark"] .dark-mode-toggle .icon-sun { display: none; }
+  html[data-theme-pref="dark"] .dark-mode-toggle .icon-moon { display: block; }
+  html[data-theme-pref="dark"] .dark-mode-toggle .icon-system { display: none; }
+
+  html[data-theme-pref="system"] .dark-mode-toggle .icon-sun { display: none; }
+  html[data-theme-pref="system"] .dark-mode-toggle .icon-moon { display: none; }
+  html[data-theme-pref="system"] .dark-mode-toggle .icon-system { display: block; }
 
 </style>

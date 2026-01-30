@@ -15,6 +15,20 @@
 <script>
 (function() {
   var STORAGE_KEY = 'hugo-classless-color-scheme';
+  var PREF_ATTR = 'data-theme-pref';
+  var THEME_ATTR = 'data-theme';
+
+  function getPrefersDark() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function normalizePref(pref) {
+    return (pref === 'light' || pref === 'dark') ? pref : 'system';
+  }
+
+  function resolveEffective(pref) {
+    return pref === 'system' ? (getPrefersDark() ? 'dark' : 'light') : pref;
+  }
 
   function setMediaForMode(el, mode, lightMedia, darkMedia) {
     if (!el) return;
@@ -23,18 +37,30 @@
     else el.media = el.getAttribute('data-default-media') || '';
   }
 
-  function applyTheme(mode) {
-    document.documentElement.setAttribute('data-theme', mode);
+  function setEnabled(el, enabled) {
+    if (!el) return;
+    el.disabled = !enabled;
+  }
+
+  function applyTheme(pref) {
+    var effective = resolveEffective(pref);
+    document.documentElement.setAttribute(PREF_ATTR, pref);
+    document.documentElement.setAttribute(THEME_ATTR, effective);
 
     // Toggle syntax highlight stylesheets
     var syntaxLight = document.getElementById('syntax-light');
     var syntaxDark = document.getElementById('syntax-dark');
-    setMediaForMode(syntaxLight, mode, 'all', 'not all');
-    setMediaForMode(syntaxDark, mode, 'not all', 'all');
+    setMediaForMode(syntaxLight, effective, 'all', 'not all');
+    setMediaForMode(syntaxDark, effective, 'not all', 'all');
 
     // Toggle theme dark stylesheet
     var themeDark = document.getElementById('theme-style-dark');
-    setMediaForMode(themeDark, mode, 'not all', 'all');
+    setMediaForMode(themeDark, effective, 'not all', 'all');
+
+    var isDark = effective === 'dark';
+    setEnabled(syntaxLight, !isDark);
+    setEnabled(syntaxDark, isDark);
+    setEnabled(themeDark, isDark);
   }
 
   // Store default media values once DOM is ready so system mode can restore them
@@ -50,20 +76,21 @@
   // Apply saved preference early to avoid flash
   var saved = null;
   try { saved = localStorage.getItem(STORAGE_KEY); } catch(e) {}
-  var mode = (saved === 'light' || saved === 'dark') ? saved : 'system';
-  // For early apply before DOM is ready, set data-theme and handle stylesheet media directly
-  document.documentElement.setAttribute('data-theme', mode);
+  var pref = normalizePref(saved);
+  // For early apply before DOM is ready, set data-theme and data-theme-pref
+  document.documentElement.setAttribute(PREF_ATTR, pref);
+  document.documentElement.setAttribute(THEME_ATTR, resolveEffective(pref));
 
   // Set up toggle and full theme application after DOM is ready
   document.addEventListener('DOMContentLoaded', function() {
     storeDefaults();
-    applyTheme(mode);
+    applyTheme(pref);
 
     var btn = document.getElementById('dark-mode-toggle');
     if (!btn) return;
 
     btn.addEventListener('click', function() {
-      var current = document.documentElement.getAttribute('data-theme');
+      var current = document.documentElement.getAttribute(PREF_ATTR) || 'system';
       var next;
       if (current === 'light') next = 'dark';
       else if (current === 'dark') next = 'system';
@@ -82,7 +109,7 @@
 
   // Listen for system preference changes (re-apply in system mode)
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-    if (document.documentElement.getAttribute('data-theme') === 'system') {
+    if (document.documentElement.getAttribute(PREF_ATTR) === 'system') {
       applyTheme('system');
     }
   });
