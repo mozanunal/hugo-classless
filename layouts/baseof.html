@@ -72,7 +72,10 @@
       <ul>
         {{- if .Site.Menus.main -}}
         {{- range .Site.Menus.main -}}
-        <li><a href="{{.URL | relURL}}">{{.Name}}</a></li>
+        {{- $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) -}}
+        <li>
+          <a href="{{ .URL | relURL }}"{{ if $active }} class="active" aria-current="page"{{ end }}>{{ .Name }}</a>
+        </li>
         {{- end -}}
         {{- end -}}
         {{- partial "dark-mode-toggle.html" . -}}
